@@ -1,4 +1,5 @@
 import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:evently/features/app_config/widgets/custom_config_row.dart';
@@ -84,7 +85,12 @@ class AppConfigScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 24),
-            FilledButton(onPressed: () {}, child: Text(l10n.letsStart)),
+            FilledButton(
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, RoutesName.loginScreen);
+              },
+              child: Text(l10n.letsStart),
+            ),
             const SizedBox(height: 24),
           ],
         ),
