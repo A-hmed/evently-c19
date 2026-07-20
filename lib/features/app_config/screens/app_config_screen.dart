@@ -1,7 +1,9 @@
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:evently/features/app_config/widgets/custom_config_row.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class AppConfigScreen extends StatelessWidget {
   const AppConfigScreen({super.key});
@@ -11,6 +13,9 @@ class AppConfigScreen extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     bool isSelected = true;
+
+    final provider = context.read<AppConfigProvider>();
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -50,7 +55,7 @@ class AppConfigScreen extends StatelessWidget {
                         color: colorScheme.tertiary,
                       ),
               ),
-
+              onLeftTap: () {},
               rightChild: Text(
                 "Arabic",
                 style: !isSelected
@@ -62,13 +67,20 @@ class AppConfigScreen extends StatelessWidget {
                         color: colorScheme.tertiary,
                       ),
               ),
+              onRightTap: () {},
             ),
             const SizedBox(height: 8),
             CustomConfigRow(
               title: 'Theme',
-              isSelected: isSelected,
+              isSelected: !provider.isDark,
               leftChild: SvgPicture.asset(AppIcons.sun),
+              onLeftTap: () {
+                provider.changeTheme(ThemeMode.light);
+              },
               rightChild: SvgPicture.asset(AppIcons.moon),
+              onRightTap: () {
+                provider.changeTheme(ThemeMode.dark);
+              },
             ),
             const SizedBox(height: 24),
             FilledButton(onPressed: () {}, child: Text("Let’s start")),

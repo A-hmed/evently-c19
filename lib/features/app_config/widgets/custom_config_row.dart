@@ -5,6 +5,8 @@ class CustomConfigRow extends StatelessWidget {
   final bool isSelected;
   final Widget leftChild;
   final Widget rightChild;
+  final VoidCallback onLeftTap;
+  final VoidCallback onRightTap;
 
   const CustomConfigRow({
     super.key,
@@ -12,6 +14,8 @@ class CustomConfigRow extends StatelessWidget {
     required this.isSelected,
     required this.leftChild,
     required this.rightChild,
+    required this.onLeftTap,
+    required this.onRightTap,
   });
 
   @override
@@ -28,22 +32,28 @@ class CustomConfigRow extends StatelessWidget {
           ),
         ),
         const Spacer(),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-          decoration: BoxDecoration(
-            color: isSelected ? colorScheme.primary : colorScheme.onPrimary,
-            borderRadius: BorderRadius.circular(8),
+        GestureDetector(
+          onTap: onLeftTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: isSelected ? colorScheme.primary : colorScheme.onPrimary,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: leftChild,
           ),
-          child: leftChild,
         ),
         const SizedBox(width: 8),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-          decoration: BoxDecoration(
-            color: isSelected ? colorScheme.onPrimary : colorScheme.primary,
-            borderRadius: BorderRadius.circular(8),
+        GestureDetector(
+          onTap: onRightTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+            decoration: BoxDecoration(
+              color: isSelected ? colorScheme.onPrimary : colorScheme.primary,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: rightChild,
           ),
-          child: rightChild,
         ),
       ],
     );
