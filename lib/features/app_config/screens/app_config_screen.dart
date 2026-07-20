@@ -1,3 +1,4 @@
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:evently/features/app_config/widgets/custom_config_row.dart';
@@ -12,8 +13,7 @@ class AppConfigScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
-    bool isSelected = true;
-
+    final l10n = AppLocalizations.of(context)!;
     final provider = context.read<AppConfigProvider>();
 
     return Scaffold(
@@ -32,21 +32,18 @@ class AppConfigScreen extends StatelessWidget {
               ),
             ),
             Text(
-              "Personalize Your Experience",
+              l10n.personalizeYourExperience,
               style: textTheme.titleMedium?.copyWith(fontWeight: .w600),
             ),
             const SizedBox(height: 8),
-            Text(
-              "Choose your preferred theme and language to get started with a comfortable, tailored experience that suits your style.",
-              style: textTheme.bodyLarge,
-            ),
+            Text(l10n.appConfigSubtitle, style: textTheme.bodyLarge),
             const SizedBox(height: 16),
             CustomConfigRow(
-              title: 'Language',
-              isSelected: isSelected,
+              title: l10n.language,
+              isSelected: provider.isEn,
               leftChild: Text(
-                'English',
-                style: isSelected
+                l10n.english,
+                style: provider.isEn
                     ? textTheme.labelMedium?.copyWith(
                         fontWeight: .w600,
                         color: colorScheme.onPrimary,
@@ -55,10 +52,12 @@ class AppConfigScreen extends StatelessWidget {
                         color: colorScheme.tertiary,
                       ),
               ),
-              onLeftTap: () {},
+              onLeftTap: () {
+                provider.changeLanguage('en');
+              },
               rightChild: Text(
-                "Arabic",
-                style: !isSelected
+                l10n.arabic,
+                style: !provider.isEn
                     ? textTheme.labelMedium?.copyWith(
                         fontWeight: .w600,
                         color: colorScheme.onPrimary,
@@ -67,11 +66,13 @@ class AppConfigScreen extends StatelessWidget {
                         color: colorScheme.tertiary,
                       ),
               ),
-              onRightTap: () {},
+              onRightTap: () {
+                provider.changeLanguage('ar');
+              },
             ),
             const SizedBox(height: 8),
             CustomConfigRow(
-              title: 'Theme',
+              title: l10n.theme,
               isSelected: !provider.isDark,
               leftChild: SvgPicture.asset(AppIcons.sun),
               onLeftTap: () {
@@ -83,7 +84,7 @@ class AppConfigScreen extends StatelessWidget {
               },
             ),
             const SizedBox(height: 24),
-            FilledButton(onPressed: () {}, child: Text("Let’s start")),
+            FilledButton(onPressed: () {}, child: Text(l10n.letsStart)),
             const SizedBox(height: 24),
           ],
         ),

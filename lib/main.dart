@@ -1,11 +1,16 @@
 import 'package:evently/core/router/app_router.dart';
 import 'package:evently/core/router/routes_name.dart';
+import 'package:evently/core/services/shared_pref_service.dart';
 import 'package:evently/core/theme/app_theme.dart';
 import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
+import 'package:evently/core/l10n/app_localizations.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefService.init();
   runApp(const EventlyApp());
 }
 
@@ -24,6 +29,14 @@ class EventlyApp extends StatelessWidget {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             debugShowCheckedModeBanner: false,
+            localizationsDelegates: const [
+              AppLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalWidgetsLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            supportedLocales: const [Locale('en'), Locale('ar')],
+            locale: Locale(provider.locale),
             routes: AppRouter.routes(),
             initialRoute: RoutesName.splash,
           );
