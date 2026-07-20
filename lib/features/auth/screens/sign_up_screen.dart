@@ -1,16 +1,16 @@
-import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
-import 'package:evently/features/auth/widgets/login_form_widget.dart';
 import 'package:evently/features/auth/widgets/or_divider_widget.dart';
+import 'package:evently/features/auth/widgets/sign_up_form_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_svg/svg.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatelessWidget {
+  const SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -27,36 +27,19 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               Text(
-                "Login to your account",
+                "Create your account",
                 style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
               ),
               const SizedBox(height: 24),
-              const LoginFormWidget(),
-              Align(
-                alignment: AlignmentDirectional.centerEnd,
-                child: TextButton(
-                  onPressed: () {},
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(fontWeight: .w600),
-                  ),
-                ),
-              ),
+              const SignUpFormWidget(),
               const SizedBox(height: 48),
-              FilledButton(onPressed: () {}, child: const Text("Login")),
+              FilledButton(onPressed: () {}, child: Text("SignUp")),
+              const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: .center,
                 children: [
-                  Text("Don't have an account? "),
-                  TextButton(
-                    onPressed: () {
-                      Navigator.pushReplacementNamed(
-                        context,
-                        RoutesName.signUpScreen,
-                      );
-                    },
-                    child: const Text("SignUp"),
-                  ),
+                  Text("Already have an account? "),
+                  TextButton(onPressed: () {}, child: const Text("Login")),
                 ],
               ),
               const SizedBox(height: 24),
