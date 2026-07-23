@@ -1,5 +1,6 @@
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -14,7 +15,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3), () {
       if (context.mounted) {
-        Navigator.pushReplacementNamed(context, RoutesName.appConfigScreen);
+        if (FirebaseAuth.instance.currentUser != null) {
+          Navigator.pushReplacementNamed(context, RoutesName.mainLayoutScreen);
+        } else {
+          Navigator.pushReplacementNamed(context, RoutesName.appConfigScreen);
+        }
       }
     });
     super.initState();

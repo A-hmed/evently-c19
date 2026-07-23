@@ -1,0 +1,96 @@
+import 'package:evently/core/router/routes_name.dart';
+import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/features/auth/providers/login_provider.dart';
+import 'package:evently/features/auth/widgets/login_form_widget.dart';
+import 'package:evently/features/auth/widgets/or_divider_widget.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
+
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+    return Scaffold(
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: .start,
+            children: [
+              Align(
+                alignment: AlignmentDirectional.center,
+                child: Image.asset(
+                  AppImages.logo,
+                  width: MediaQuery.sizeOf(context).width * .6,
+                ),
+              ),
+              const SizedBox(height: 48),
+              Text(
+                "Login to your account",
+                style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
+              ),
+              const SizedBox(height: 24),
+              const LoginFormWidget(),
+              Align(
+                alignment: AlignmentDirectional.centerEnd,
+                child: TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(fontWeight: .w600),
+                  ),
+                ),
+              ),
+              const SizedBox(height: 48),
+              Consumer<LoginProvider>(
+                builder: (context, provider, child) {
+                  return FilledButton(
+                    onPressed: () {
+                      if (provider.loginStates == LoginStates.loading) return;
+                      provider.login(context);
+                    },
+                    child: provider.loginStates == LoginStates.loading
+                        ? CircularProgressIndicator(color: Colors.white)
+                        : const Text("Login"),
+                  );
+                },
+              ),
+              Row(
+                mainAxisAlignment: .center,
+                children: [
+                  Text("Don't have an account? "),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                        context,
+                        RoutesName.signUpScreen,
+                      );
+                    },
+                    child: const Text("SignUp"),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 24),
+              const OrDividerWidget(),
+              const SizedBox(height: 24),
+              OutlinedButton(
+                onPressed: () {},
+                child: Row(
+                  mainAxisAlignment: .center,
+                  spacing: 16,
+                  children: [
+                    SvgPicture.asset(AppIcons.google, fit: .scaleDown),
+                    Text("Login with Google"),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}

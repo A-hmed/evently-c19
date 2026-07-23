@@ -67,6 +67,12 @@ abstract class AppTheme {
       ),
     ),
 
+    disabledColor: AppColors.lightStroke,
+    dividerTheme: const DividerThemeData(
+      thickness: 1,
+      color: AppColors.lightStroke,
+    ),
+
     appBarTheme: AppBarThemeData(
       backgroundColor: AppColors.lightBackground,
       foregroundColor: AppColors.lightMainText,
@@ -77,6 +83,56 @@ abstract class AppTheme {
         fontSize: 18,
         fontWeight: .w500,
         color: AppColors.lightMainText,
+      ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.lightInputs,
+      prefixIconColor: AppColors.lightDisable,
+      suffixIconColor: AppColors.lightDisable,
+      hintStyle: GoogleFonts.poppins(
+        color: AppColors.lightSecText,
+        fontWeight: .normal,
+        fontSize: 14,
+      ),
+      labelStyle: GoogleFonts.poppins(
+        color: AppColors.lightSecText,
+        fontWeight: .normal,
+        fontSize: 14,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.lightStroke, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.lightStroke, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.lightMainColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.lightRed, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.lightRed, width: 1),
+      ),
+    ),
+
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        textStyle: TextStyle(
+          fontSize: 14,
+          fontWeight: .normal,
+          color: AppColors.lightMainColor,
+          decoration: TextDecoration.underline,
+          decorationColor: AppColors.lightMainColor,
+          decorationThickness: 1,
+        ),
       ),
     ),
 
@@ -194,6 +250,62 @@ abstract class AppTheme {
         fontSize: 18,
         fontWeight: FontWeight.w500,
         color: AppColors.darkMainText,
+      ),
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.darkInputs,
+      prefixIconColor: AppColors.darkDisable,
+      suffixIconColor: AppColors.darkDisable,
+      hintStyle: GoogleFonts.poppins(
+        color: AppColors.darkSecText,
+        fontWeight: .normal,
+        fontSize: 14,
+      ),
+      labelStyle: GoogleFonts.poppins(
+        color: AppColors.darkSecText,
+        fontWeight: .normal,
+        fontSize: 14,
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkStroke, width: 1),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkStroke, width: 1),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkMainColor, width: 1),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkRed, width: 1),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(16),
+        borderSide: const BorderSide(color: AppColors.darkRed, width: 1),
+      ),
+    ),
+
+    dividerColor: AppColors.darkStroke,
+    dividerTheme: const DividerThemeData(
+      thickness: 1,
+      color: AppColors.darkStroke,
+    ),
+
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        textStyle: TextStyle(
+          fontSize: 14,
+          fontWeight: .normal,
+          color: AppColors.darkMainColor,
+          decoration: TextDecoration.underline,
+          decorationColor: AppColors.darkMainColor,
+          decorationThickness: 1,
+        ),
       ),
     ),
 
