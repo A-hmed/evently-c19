@@ -67,6 +67,23 @@ abstract class AppTheme {
       ),
     ),
 
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.lightInputs,
+      selectedItemColor: AppColors.lightMainColor,
+      unselectedItemColor: AppColors.lightDisable,
+      selectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: .normal,
+        color: AppColors.lightMainColor,
+      ),
+      unselectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: .normal,
+        color: AppColors.lightMainText,
+      ),
+      type: BottomNavigationBarType.fixed,
+    ),
+
     disabledColor: AppColors.lightStroke,
     dividerTheme: const DividerThemeData(
       thickness: 1,
@@ -238,6 +255,22 @@ abstract class AppTheme {
           color: AppColors.darkMainText,
         ),
       ),
+    ),
+    bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      backgroundColor: AppColors.darkInputs,
+      selectedItemColor: AppColors.darkMainColor,
+      unselectedItemColor: AppColors.darkDisable,
+      selectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: .normal,
+        color: AppColors.darkMainColor,
+      ),
+      unselectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 12,
+        fontWeight: .normal,
+        color: AppColors.darkMainText,
+      ),
+      type: BottomNavigationBarType.fixed,
     ),
 
     appBarTheme: AppBarThemeData(
