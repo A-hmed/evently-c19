@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class FirebaseServices {
@@ -13,15 +11,12 @@ abstract class FirebaseServices {
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        log('The password provided is too weak.');
-        return null;
+        throw "The password provided is too weak.";
       } else if (e.code == 'email-already-in-use') {
-        log('The account already exists for that email.');
-        return null;
+        throw "The account already exists for that email.";
       }
     } catch (e) {
-      log(e.toString());
-      return null;
+      rethrow;
     }
     return null;
   }
@@ -38,15 +33,12 @@ abstract class FirebaseServices {
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        log('No user found for that email.');
-        return null;
+        throw "No user found for that email.";
       } else if (e.code == 'wrong-password') {
-        log('Wrong password provided for that user.');
-        return null;
+        throw "Wrong password provided for that user.";
       }
     } catch (e) {
-      log(e.toString());
-      return null;
+      rethrow;
     }
     return null;
   }

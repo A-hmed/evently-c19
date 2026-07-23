@@ -1,40 +1,36 @@
-import 'dart:developer';
-
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/services/firebase_services.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-enum SignUpState { initial, loading, success, failure }
+enum LoginStates { initial, loading, success, failure }
 
-class SignUpProvider extends ChangeNotifier {
+class LoginProvider extends ChangeNotifier {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  TextEditingController nameController = TextEditingController();
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController confirmPasswordController = TextEditingController();
 
-  SignUpState state = SignUpState.initial;
+  LoginStates loginStates = LoginStates.initial;
 
-  Future<void> signUp(BuildContext context) async {
+  Future<void> login(BuildContext context) async {
     if (formKey.currentState!.validate()) {
       try {
-        state = SignUpState.loading;
+        loginStates = LoginStates.loading;
         notifyListeners();
-        final user = await FirebaseServices.createAccount(
+
+        await FirebaseServices.login(
           email: emailController.text,
           password: passwordController.text,
         );
+        loginStates = LoginStates.success;
 
-        log(user?.uid ?? "");
-        log(user?.email ?? "");
-
-        state = SignUpState.success;
         if (context.mounted) {
-          Navigator.pushReplacementNamed(context, RoutesName.loginScreen);
+          Navigator.pushReplacementNamed(context, RoutesName.mainLayoutScreen);
         }
+
         Fluttertoast.showToast(
-          msg: "Account Created Successfully",
+          msg: "Logged in successfully",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           backgroundColor: Colors.green,
@@ -43,7 +39,7 @@ class SignUpProvider extends ChangeNotifier {
         );
         notifyListeners();
       } catch (e) {
-        state = SignUpState.failure;
+        loginStates = LoginStates.failure;
         Fluttertoast.showToast(
           msg: e.toString(),
           toastLength: Toast.LENGTH_SHORT,

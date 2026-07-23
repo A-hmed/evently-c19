@@ -1,8 +1,10 @@
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/features/auth/providers/sign_up_provider.dart';
 import 'package:evently/features/auth/widgets/or_divider_widget.dart';
 import 'package:evently/features/auth/widgets/sign_up_form_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -10,7 +12,6 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -33,7 +34,24 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const SignUpFormWidget(),
               const SizedBox(height: 48),
-              FilledButton(onPressed: () {}, child: Text("SignUp")),
+              Consumer<SignUpProvider>(
+                builder: (context, provider, child) {
+                  return FilledButton(
+                    onPressed: provider.state == SignUpState.loading
+                        ? null
+                        : () {
+                            provider.signUp(context);
+                          },
+                    child: provider.state == SignUpState.loading
+                        ? Center(
+                            child: const CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          )
+                        : Text("SignUp"),
+                  );
+                },
+              ),
               const SizedBox(height: 24),
               Row(
                 mainAxisAlignment: .center,

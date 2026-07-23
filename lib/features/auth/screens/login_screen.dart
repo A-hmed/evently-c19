@@ -1,9 +1,11 @@
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
+import 'package:evently/features/auth/providers/login_provider.dart';
 import 'package:evently/features/auth/widgets/login_form_widget.dart';
 import 'package:evently/features/auth/widgets/or_divider_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -43,7 +45,19 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 48),
-              FilledButton(onPressed: () {}, child: const Text("Login")),
+              Consumer<LoginProvider>(
+                builder: (context, provider, child) {
+                  return FilledButton(
+                    onPressed: () {
+                      if (provider.loginStates == LoginStates.loading) return;
+                      provider.login(context);
+                    },
+                    child: provider.loginStates == LoginStates.loading
+                        ? CircularProgressIndicator(color: Colors.white)
+                        : const Text("Login"),
+                  );
+                },
+              ),
               Row(
                 mainAxisAlignment: .center,
                 children: [
