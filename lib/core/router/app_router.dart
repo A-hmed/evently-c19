@@ -4,6 +4,7 @@ import 'package:evently/features/auth/providers/login_provider.dart';
 import 'package:evently/features/auth/providers/sign_up_provider.dart';
 import 'package:evently/features/auth/screens/login_screen.dart';
 import 'package:evently/features/auth/screens/sign_up_screen.dart';
+import 'package:evently/features/event_managment/screens/event_managment_screen.dart';
 import 'package:evently/features/main_layout/screen/main_layout_screen.dart';
 import 'package:evently/features/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ abstract class AppRouter {
         child: const SignUpScreen(),
       ),
       RoutesName.mainLayoutScreen: (_) => const MainLayoutScreen(),
+      RoutesName.eventManagmentScreen: (_) => const EventManagmentScreen(),
     };
   }
 }

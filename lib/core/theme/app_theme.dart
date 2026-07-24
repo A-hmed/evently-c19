@@ -15,6 +15,7 @@ abstract class AppTheme {
       surface: AppColors.lightBackground,
       onSurface: AppColors.lightSecText,
       tertiary: AppColors.lightMainColor,
+      outline: AppColors.lightStroke,
     ),
 
     textTheme: GoogleFonts.poppinsTextTheme(
@@ -65,6 +66,26 @@ abstract class AppTheme {
           color: AppColors.lightMainText,
         ),
       ),
+    ),
+
+    tabBarTheme: TabBarThemeData(
+      tabAlignment: TabAlignment.start,
+      indicatorColor: Colors.transparent,
+      dividerColor: Colors.transparent,
+      dividerHeight: 0,
+      labelColor: AppColors.lightInputs,
+      unselectedLabelColor: AppColors.lightMainText,
+      labelStyle: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: .w500,
+        color: AppColors.lightInputs,
+      ),
+      unselectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: .w500,
+        color: AppColors.lightMainText,
+      ),
+      labelPadding: const EdgeInsetsGeometry.only(right: 8),
     ),
 
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
@@ -205,6 +226,7 @@ abstract class AppTheme {
       surface: AppColors.darkBackground,
       onSurface: AppColors.darkSecText,
       tertiary: AppColors.darkMainText,
+      outline: AppColors.darkStroke,
     ),
 
     textTheme: GoogleFonts.poppinsTextTheme(
@@ -256,6 +278,27 @@ abstract class AppTheme {
         ),
       ),
     ),
+
+    tabBarTheme: TabBarThemeData(
+      tabAlignment: TabAlignment.start,
+      indicatorColor: Colors.transparent,
+      dividerColor: Colors.transparent,
+      dividerHeight: 0,
+      labelColor: AppColors.darkInputs,
+      unselectedLabelColor: AppColors.darkMainText,
+      labelStyle: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: .w500,
+        color: AppColors.darkInputs,
+      ),
+      unselectedLabelStyle: GoogleFonts.poppins(
+        fontSize: 16,
+        fontWeight: .w500,
+        color: AppColors.darkMainText,
+      ),
+      labelPadding: const EdgeInsetsGeometry.only(right: 8),
+    ),
+
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkInputs,
       selectedItemColor: AppColors.darkMainColor,

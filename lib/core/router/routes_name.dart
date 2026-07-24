@@ -4,4 +4,5 @@ abstract class RoutesName {
   static const String loginScreen = '/login';
   static const String signUpScreen = '/sign-up';
   static const String mainLayoutScreen = '/main-layout';
+  static const String eventManagmentScreen = '/event-managment';
 }

@@ -1,3 +1,4 @@
+import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/features/main_layout/tabs/favorites_tab/screen/favorite_tab.dart';
 import 'package:evently/features/main_layout/tabs/home_tab/screen/home_tab.dart';
 import 'package:evently/features/main_layout/tabs/profile_tab/screen/profile_tab.dart';
@@ -21,7 +22,9 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
     return Scaffold(
       body: tabs[selectedTab],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, RoutesName.eventManagmentScreen);
+        },
         child: const Icon(Icons.add_rounded),
       ),
       bottomNavigationBar: ClipRRect(
