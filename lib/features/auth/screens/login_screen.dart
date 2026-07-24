@@ -1,3 +1,4 @@
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/auth/providers/login_provider.dart';
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -29,7 +31,7 @@ class LoginScreen extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               Text(
-                "Login to your account",
+                locale.loginToYourAccount,
                 style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
               ),
               const SizedBox(height: 24),
@@ -39,8 +41,8 @@ class LoginScreen extends StatelessWidget {
                 child: TextButton(
                   onPressed: () {},
                   child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(fontWeight: .w600),
+                    locale.forgotPassword,
+                    style: const TextStyle(fontWeight: .w600),
                   ),
                 ),
               ),
@@ -53,15 +55,15 @@ class LoginScreen extends StatelessWidget {
                       provider.login(context);
                     },
                     child: provider.loginStates == LoginStates.loading
-                        ? CircularProgressIndicator(color: Colors.white)
-                        : const Text("Login"),
+                        ? const CircularProgressIndicator(color: Colors.white)
+                        : Text(locale.login),
                   );
                 },
               ),
               Row(
                 mainAxisAlignment: .center,
                 children: [
-                  Text("Don't have an account? "),
+                  Text(locale.dontHaveAccount),
                   TextButton(
                     onPressed: () {
                       Navigator.pushReplacementNamed(
@@ -69,7 +71,7 @@ class LoginScreen extends StatelessWidget {
                         RoutesName.signUpScreen,
                       );
                     },
-                    child: const Text("SignUp"),
+                    child: Text(locale.signUp),
                   ),
                 ],
               ),
@@ -83,7 +85,7 @@ class LoginScreen extends StatelessWidget {
                   spacing: 16,
                   children: [
                     SvgPicture.asset(AppIcons.google, fit: .scaleDown),
-                    Text("Login with Google"),
+                    Text(locale.loginWithGoogle),
                   ],
                 ),
               ),

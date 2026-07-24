@@ -1,35 +1,37 @@
+import 'package:evently/core/l10n/app_localizations.dart';
+
 abstract class AppValidator {
-  static String? nameValidator(String? name) {
+  static String? nameValidator(String? name, AppLocalizations locale) {
     if (name == null || name.isEmpty) {
-      return "Name cannot be empty";
+      return locale.nameCannotBeEmpty;
     }
     if (name.length < 3) {
-      return "Name must be at least 3 characters long";
+      return locale.nameMinLength;
     }
     return null;
   }
 
-  static String? emailValidator(String? email) {
+  static String? emailValidator(String? email, AppLocalizations locale) {
     if (email == null || email.isEmpty) {
-      return "Email cannot be empty";
+      return locale.emailCannotBeEmpty;
     }
     if (email.length < 3) {
-      return "Email must be at least 3 characters long";
+      return locale.emailMinLength;
     }
     if (!RegExp(
       r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$",
     ).hasMatch(email)) {
-      return "Invalid email";
+      return locale.invalidEmail;
     }
     return null;
   }
 
-  static String? passwordValidator(String? password) {
+  static String? passwordValidator(String? password, AppLocalizations locale) {
     if (password == null || password.isEmpty) {
-      return "Password cannot be empty";
+      return locale.passwordCannotBeEmpty;
     }
     if (password.length < 6) {
-      return "Password must be at least 6 characters long";
+      return locale.passwordMinLength;
     }
     return null;
   }
@@ -37,12 +39,13 @@ abstract class AppValidator {
   static String? confirmPasswordValidator({
     String? confirmPassword,
     String? password,
+    required AppLocalizations locale,
   }) {
     if (confirmPassword == null || confirmPassword.isEmpty) {
-      return "Confirm password cannot be empty";
+      return locale.confirmPasswordCannotBeEmpty;
     }
     if (confirmPassword != password) {
-      return "Passwords do not match";
+      return locale.passwordsDoNotMatch;
     }
     return null;
   }

@@ -1,3 +1,4 @@
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/auth/providers/sign_up_provider.dart';
 import 'package:evently/features/auth/widgets/or_divider_widget.dart';
@@ -12,6 +13,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -28,7 +30,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 48),
               Text(
-                "Create your account",
+                locale.createYourAccount,
                 style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
               ),
               const SizedBox(height: 24),
@@ -43,12 +45,12 @@ class SignUpScreen extends StatelessWidget {
                             provider.signUp(context);
                           },
                     child: provider.state == SignUpState.loading
-                        ? Center(
-                            child: const CircularProgressIndicator(
+                        ? const Center(
+                            child: CircularProgressIndicator(
                               color: Colors.white,
                             ),
                           )
-                        : Text("SignUp"),
+                        : Text(locale.signUp),
                   );
                 },
               ),
@@ -56,8 +58,8 @@ class SignUpScreen extends StatelessWidget {
               Row(
                 mainAxisAlignment: .center,
                 children: [
-                  Text("Already have an account? "),
-                  TextButton(onPressed: () {}, child: const Text("Login")),
+                  Text(locale.alreadyHaveAccount),
+                  TextButton(onPressed: () {}, child: Text(locale.login)),
                 ],
               ),
               const SizedBox(height: 24),
@@ -70,7 +72,7 @@ class SignUpScreen extends StatelessWidget {
                   spacing: 16,
                   children: [
                     SvgPicture.asset(AppIcons.google, fit: .scaleDown),
-                    Text("Login with Google"),
+                    Text(locale.loginWithGoogle),
                   ],
                 ),
               ),
