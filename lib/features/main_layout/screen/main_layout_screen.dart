@@ -1,3 +1,5 @@
+import 'package:evently/core/l10n/app_localizations.dart';
+import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/features/main_layout/tabs/favorites_tab/screen/favorite_tab.dart';
 import 'package:evently/features/main_layout/tabs/home_tab/screen/home_tab.dart';
 import 'package:evently/features/main_layout/tabs/profile_tab/screen/profile_tab.dart';
@@ -18,10 +20,13 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final locale = AppLocalizations.of(context)!;
     return Scaffold(
       body: tabs[selectedTab],
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, RoutesName.eventManagmentScreen);
+        },
         child: const Icon(Icons.add_rounded),
       ),
       bottomNavigationBar: ClipRRect(
@@ -34,19 +39,19 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
           currentIndex: selectedTab,
           items: [
             BottomNavigationBarItem(
-              icon: Icon(IconsaxPlusLinear.home_1),
-              activeIcon: Icon(IconsaxPlusBold.home_1),
-              label: 'Home',
+              icon: const Icon(IconsaxPlusLinear.home_1),
+              activeIcon: const Icon(IconsaxPlusBold.home_1),
+              label: locale.home,
             ),
             BottomNavigationBarItem(
-              icon: Icon(IconsaxPlusLinear.heart),
-              activeIcon: Icon(IconsaxPlusBold.heart),
-              label: 'Favorite',
+              icon: const Icon(IconsaxPlusLinear.heart),
+              activeIcon: const Icon(IconsaxPlusBold.heart),
+              label: locale.favorite,
             ),
             BottomNavigationBarItem(
-              icon: Icon(IconsaxPlusLinear.user),
-              activeIcon: Icon(IconsaxPlusBold.user),
-              label: 'Profile',
+              icon: const Icon(IconsaxPlusLinear.user),
+              activeIcon: const Icon(IconsaxPlusBold.user),
+              label: locale.profile,
             ),
           ],
         ),
