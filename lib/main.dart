@@ -41,7 +41,7 @@ class EventlyApp extends StatelessWidget {
             supportedLocales: const [Locale('en'), Locale('ar')],
             locale: Locale(provider.locale),
             routes: AppRouter.routes(),
-            initialRoute: RoutesName.appConfigScreen,
+            initialRoute: RoutesName.splash,
           );
         },
       ),

@@ -11,6 +11,7 @@ class CustomTextFormField extends StatefulWidget {
   final Icon? suffixIcon;
   final Icon? prefixIcon;
   final bool isPassword;
+  final int maxLines;
 
   const CustomTextFormField({
     super.key,
@@ -23,6 +24,7 @@ class CustomTextFormField extends StatefulWidget {
     this.suffixIcon,
     this.prefixIcon,
     this.isPassword = false,
+    this.maxLines = 1,
   });
 
   @override
@@ -45,6 +47,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       onTapOutside: (_) => FocusScope.of(context).unfocus(),
       autovalidateMode: AutovalidateMode.onUserInteraction,
       validator: widget.validator,
+      maxLines: widget.maxLines,
       style: Theme.of(context).textTheme.bodyLarge,
       decoration: InputDecoration(
         hintText: widget.hintText,
