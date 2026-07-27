@@ -35,5 +35,16 @@
     "passwordCannotBeEmpty": "كلمة المرور لا يمكن أن تكون فارغة",
     "passwordMinLength": "يجب أن تكون كلمة المرور 6 أحرف على الأقل",
     "confirmPasswordCannotBeEmpty": "تأكيد كلمة المرور لا يمكن أن يكون فارغاً",
-    "passwordsDoNotMatch": "كلمات المرور غير متطابقة"
+    "passwordsDoNotMatch": "كلمات المرور غير متطابقة",
+    "addEvent": "إضافة حدث",
+    "title": "العنوان",
+    "eventTitle": "عنوان الحدث",
+    "description": "الوصف",
+    "eventDescription": "وصف الحدث",
+    "eventDate": "تاريخ الحدث",
+    "chooseDate": "اختر التاريخ",
+    "eventTime": "وقت الحدث",
+    "chooseTime": "اختر الوقت",
+    "darkTheme": "المظهر الداكن",
+    "logout": "تسجيل الخروج"
 }

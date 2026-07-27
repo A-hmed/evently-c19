@@ -35,5 +35,16 @@
     "passwordCannotBeEmpty": "Password cannot be empty",
     "passwordMinLength": "Password must be at least 6 characters long",
     "confirmPasswordCannotBeEmpty": "Confirm password cannot be empty",
-    "passwordsDoNotMatch": "Passwords do not match"
+    "passwordsDoNotMatch": "Passwords do not match",
+    "addEvent": "Add Event",
+    "title": "Title",
+    "eventTitle": "Event Title",
+    "description": "Description",
+    "eventDescription": "Event Description",
+    "eventDate": "Event Date",
+    "chooseDate": "Choose Date",
+    "eventTime": "Event Time",
+    "chooseTime": "Choose Time",
+    "darkTheme": "Dark Theme",
+    "logout": "Logout"
 }

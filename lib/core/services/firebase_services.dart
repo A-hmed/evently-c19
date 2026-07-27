@@ -4,10 +4,12 @@ abstract class FirebaseServices {
   static Future<User?> createAccount({
     required String email,
     required String password,
+    required String name,
   }) async {
     try {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
+      await credential.user?.updateDisplayName(name);
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -41,5 +43,13 @@ abstract class FirebaseServices {
       rethrow;
     }
     return null;
+  }
+
+  static Future<void> logout() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      rethrow;
+    }
   }
 }

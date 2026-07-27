@@ -1,3 +1,4 @@
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/widgets/custom_text_form_field.dart';
 import 'package:evently/features/event_managment/providers/event_managment_provider.dart';
 import 'package:flutter/material.dart';
@@ -10,11 +11,12 @@ class CreateEventForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
+    final locale = AppLocalizations.of(context)!;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Title',
+          locale.title,
           style: textTheme.bodyLarge?.copyWith(
             color: colorScheme.secondary,
             fontWeight: FontWeight.w500,
@@ -25,11 +27,11 @@ class CreateEventForm extends StatelessWidget {
           controller: context.read<EventManagmentProvider>().titleController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.next,
-          hintText: 'Event Title',
+          hintText: locale.eventTitle,
         ),
         const SizedBox(height: 16),
         Text(
-          'Description',
+          locale.description,
           style: textTheme.bodyLarge?.copyWith(
             color: colorScheme.secondary,
             fontWeight: FontWeight.w500,
@@ -42,7 +44,7 @@ class CreateEventForm extends StatelessWidget {
               .descriptionController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.done,
-          hintText: 'Event Description',
+          hintText: locale.eventDescription,
           maxLines: 5,
         ),
       ],

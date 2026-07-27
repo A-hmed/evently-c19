@@ -1,3 +1,4 @@
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/models/category_model.dart';
 import 'package:evently/core/widgets/custom_back_button.dart';
 import 'package:evently/features/event_managment/providers/event_managment_provider.dart';
@@ -16,12 +17,13 @@ class EventManagmentScreen extends StatelessWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
     final provider = context.read<EventManagmentProvider>();
+    final locale = AppLocalizations.of(context)!;
 
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 80,
         leading: const CustomBackButton(),
-        title: const Text("Add Event"),
+        title: Text(locale.addEvent),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -81,7 +83,7 @@ class EventManagmentScreen extends StatelessWidget {
                 ),
                 const SizedBox(width: 8),
                 Text(
-                  "Event Date",
+                  locale.eventDate,
                   style: textTheme.bodyLarge?.copyWith(
                     color: colorScheme.secondary,
                     fontWeight: FontWeight.w500,
@@ -108,7 +110,7 @@ class EventManagmentScreen extends StatelessWidget {
                       },
                       child: Text(
                         dateTime == null
-                            ? "Choose Date"
+                            ? locale.chooseDate
                             : DateFormat('MMM dd, yyy').format(dateTime),
                       ),
                     );
@@ -121,7 +123,7 @@ class EventManagmentScreen extends StatelessWidget {
                 Icon(IconsaxPlusLinear.clock_1, color: colorScheme.primary),
                 const SizedBox(width: 8),
                 Text(
-                  "Event Time",
+                  locale.eventTime,
                   style: textTheme.bodyLarge?.copyWith(
                     color: colorScheme.secondary,
                     fontWeight: FontWeight.w500,
@@ -141,7 +143,7 @@ class EventManagmentScreen extends StatelessWidget {
                       },
                       child: Text(
                         timeOfDay == null
-                            ? "Choose Time"
+                            ? locale.chooseTime
                             : timeOfDay.format(context),
                       ),
                     );
@@ -168,7 +170,7 @@ class EventManagmentScreen extends StatelessWidget {
                             color: Colors.white,
                           ),
                         )
-                      : const Text("Add Event"),
+                      : Text(locale.addEvent),
                 );
               },
             ),

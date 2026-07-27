@@ -22,6 +22,7 @@ class SignUpProvider extends ChangeNotifier {
         state = SignUpState.loading;
         notifyListeners();
         final user = await FirebaseServices.createAccount(
+          name: nameController.text,
           email: emailController.text,
           password: passwordController.text,
         );
