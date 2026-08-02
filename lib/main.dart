@@ -14,36 +14,40 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefService.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(const EventlyApp());
+  runApp( EventlyApp());
 }
 
 class EventlyApp extends StatelessWidget {
-  const EventlyApp({super.key});
+  EventlyApp({super.key});
+  var themeMode = ThemeMode.dark;
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => AppConfigProvider(),
-      child: Consumer<AppConfigProvider>(
-        builder: (context, provider, child) {
-          return MaterialApp(
-            title: 'Evently App',
-            themeMode: provider.themeMode,
-            theme: AppTheme.lightTheme,
-            darkTheme: AppTheme.darkTheme,
-            debugShowCheckedModeBanner: false,
-            localizationsDelegates: const [
-              AppLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            supportedLocales: const [Locale('en'), Locale('ar')],
-            locale: Locale(provider.locale),
-            routes: AppRouter.routes(),
-            initialRoute: RoutesName.splash,
-          );
-        },
+    return Theme(
+      data: ThemeData(),
+      child: ChangeNotifierProvider(
+        create: (context) => AppConfigProvider(),
+        child: Consumer<AppConfigProvider>(
+          builder: (context, provider, child) {
+            return MaterialApp(
+              title: 'Evently App',
+              themeMode: provider.themeMode,
+              theme: AppTheme.lightTheme,
+              darkTheme: AppTheme.darkTheme,
+              debugShowCheckedModeBanner: false,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: const [Locale('en'), Locale('ar')],
+              locale: Locale(provider.locale),
+              routes: AppRouter.routes(),
+              initialRoute: RoutesName.splash,
+            );
+          },
+        ),
       ),
     );
   }

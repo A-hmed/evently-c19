@@ -50,11 +50,11 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAkJRP7MOxhfLZHxrFjPM78jWHHb-ezARg',
-    appId: '1:1080671828891:android:11d0297f745c79429b7f3e',
-    messagingSenderId: '1080671828891',
-    projectId: 'evently-c19',
-    storageBucket: 'evently-c19.firebasestorage.app',
+    apiKey: 'AIzaSyBKwGuE1IgWweIKvvwtVe6bRf4FcxkOmvY',
+    appId: '1:178034240777:android:45e01155184f2d410737d8',
+    messagingSenderId: '178034240777',
+    projectId: 'evently-mon-thurs',
+    storageBucket: 'evently-mon-thurs.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(

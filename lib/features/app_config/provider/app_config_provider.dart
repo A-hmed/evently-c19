@@ -3,10 +3,7 @@ import 'package:evently/core/utils/app_constans.dart';
 import 'package:flutter/material.dart';
 
 class AppConfigProvider extends ChangeNotifier {
-  ThemeMode themeMode =
-      SharedPrefService.getString(AppConstans.themeModeKey) == 'dark'
-      ? ThemeMode.dark
-      : ThemeMode.light;
+  ThemeMode themeMode = ThemeMode.light;
 
   void changeTheme(ThemeMode newTheme) {
     themeMode = newTheme;

@@ -3,6 +3,7 @@ import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:evently/features/app_config/widgets/custom_config_row.dart';
+import 'package:evently/features/auth/providers/sign_up_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -16,7 +17,12 @@ class AppConfigScreen extends StatelessWidget {
     final ColorScheme colorScheme = Theme.of(context).colorScheme;
     final l10n = AppLocalizations.of(context)!;
     final provider = context.read<AppConfigProvider>();
+    // final provider = context.watch<AppConfigProvider>();
+    // final provider = Provider.of(context, listen: true);
 
+    // AppConfigProvider provider2 = AppConfigProvider();
+    // provider.changeTheme(newTheme);
+    // provider2.changeTheme(newTheme);
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
