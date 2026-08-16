@@ -14,6 +14,30 @@ class EventManagmentProvider extends ChangeNotifier {
   final titleController = TextEditingController();
   final descriptionController = TextEditingController();
 
+  Event? eventToEdit;
+  bool get isEditMode => eventToEdit != null;
+
+  /// Pre-fills the form with an existing event's data so the same screen
+  /// can be reused for editing. Safe to call with null (no-op), which
+  /// keeps the provider in "create" mode.
+  void initForEdit(Event? event) {
+    if (event == null) return;
+    eventToEdit = event;
+    titleController.text = event.title ?? '';
+    descriptionController.text = event.description ?? '';
+    selectedCategory = Category.categories.firstWhere(
+          (category) => category.id == event.categoryId,
+      orElse: () => Category.categories.first,
+    );
+    selectedDate = event.dateTime;
+    if (event.dateTime != null) {
+      timeOfDay = TimeOfDay(
+        hour: event.dateTime!.hour,
+        minute: event.dateTime!.minute,
+      );
+    }
+  }
+
   void changeCategory(Category category) {
     selectedCategory = category;
     notifyListeners();
@@ -30,7 +54,7 @@ class EventManagmentProvider extends ChangeNotifier {
   }
 
   CreateEventStates state = CreateEventStates.initial;
-  Future<void> createEvent(BuildContext context) async {
+  Future<void> submitEvent(BuildContext context) async {
     try {
       if (titleController.text.isNotEmpty &&
           descriptionController.text.isNotEmpty &&
@@ -39,25 +63,36 @@ class EventManagmentProvider extends ChangeNotifier {
         state = CreateEventStates.loading;
         notifyListeners();
 
-        await FirebaseFirestoreServices.createEvent(
-          Event(
-            title: titleController.text,
-            description: descriptionController.text,
-            categoryId: selectedCategory.id,
-            userId: FirebaseAuth.instance.currentUser?.uid ?? "",
-            dateTime: DateTime(
-              selectedDate!.year,
-              selectedDate!.month,
-              selectedDate!.day,
-              timeOfDay!.hour,
-              timeOfDay!.minute,
-            ),
+        final event = Event(
+          id: eventToEdit?.id,
+          title: titleController.text,
+          description: descriptionController.text,
+          categoryId: selectedCategory.id,
+          userId:
+          eventToEdit?.userId ??
+              FirebaseAuth.instance.currentUser?.uid ??
+              "",
+          dateTime: DateTime(
+            selectedDate!.year,
+            selectedDate!.month,
+            selectedDate!.day,
+            timeOfDay!.hour,
+            timeOfDay!.minute,
           ),
         );
+
+        if (isEditMode) {
+          await FirebaseFirestoreServices.updateEvent(event);
+        } else {
+          await FirebaseFirestoreServices.createEvent(event);
+        }
+
         state = CreateEventStates.success;
         notifyListeners();
         Fluttertoast.showToast(
-          msg: "Event created successfully",
+          msg: isEditMode
+              ? "Event updated successfully"
+              : "Event created successfully",
           toastLength: Toast.LENGTH_SHORT,
           gravity: ToastGravity.BOTTOM,
           backgroundColor: Colors.green,

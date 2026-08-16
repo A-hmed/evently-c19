@@ -153,4 +153,40 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get onboardingTitle1 => 'اكتشف الفعاليات';
+
+  @override
+  String get onboardingSubtitle1 =>
+      'اعثر على الفعاليات القريبة منك واستكشف ما يناسب اهتماماتك.';
+
+  @override
+  String get onboardingTitle2 => 'أنشئ وأدر فعالياتك';
+
+  @override
+  String get onboardingSubtitle2 =>
+      'أنشئ فعالياتك الخاصة في ثوانٍ وعدّلها في أي وقت تحتاج إليه.';
+
+  @override
+  String get onboardingTitle3 => 'ابقَ على تواصل';
+
+  @override
+  String get onboardingSubtitle3 =>
+      'احصل على تذكيرات ولا تفوّت أي فعالية تهمك.';
+
+  @override
+  String get skip => 'تخطي';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get getStarted => 'لنبدأ';
+
+  @override
+  String get editEvent => 'تعديل الحدث';
+
+  @override
+  String get updateEvent => 'تحديث الحدث';
 }

@@ -46,5 +46,16 @@
     "eventTime": "وقت الحدث",
     "chooseTime": "اختر الوقت",
     "darkTheme": "المظهر الداكن",
-    "logout": "تسجيل الخروج"
+    "logout": "تسجيل الخروج",
+    "onboardingTitle1": "اكتشف الفعاليات",
+    "onboardingSubtitle1": "اعثر على الفعاليات القريبة منك واستكشف ما يناسب اهتماماتك.",
+    "onboardingTitle2": "أنشئ وأدر فعالياتك",
+    "onboardingSubtitle2": "أنشئ فعالياتك الخاصة في ثوانٍ وعدّلها في أي وقت تحتاج إليه.",
+    "onboardingTitle3": "ابقَ على تواصل",
+    "onboardingSubtitle3": "احصل على تذكيرات ولا تفوّت أي فعالية تهمك.",
+    "skip": "تخطي",
+    "next": "التالي",
+    "getStarted": "لنبدأ",
+    "editEvent": "تعديل الحدث",
+    "updateEvent": "تحديث الحدث"
 }

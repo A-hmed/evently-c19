@@ -18,9 +18,9 @@ class Event {
   });
 
   factory Event.fromFirestore(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-    SnapshotOptions? options,
-  ) {
+      DocumentSnapshot<Map<String, dynamic>> snapshot,
+      SnapshotOptions? options,
+      ) {
     final data = snapshot.data();
     return Event(
       id: data?['id'],
@@ -28,7 +28,7 @@ class Event {
       title: data?['title'],
       description: data?['description'],
       categoryId: data?['categoryId'],
-      dateTime: data?['dateTime'],
+      dateTime: (data?['dateTime'] as Timestamp?)?.toDate(),
     );
   }
 

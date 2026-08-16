@@ -2,6 +2,9 @@ abstract class AppImages {
   static const String logo = 'assets/images/logo.png';
   static const String routeLogo = 'assets/images/route_logo.png';
   static const String appConfig = 'assets/images/app_config.svg';
+  static const String onboarding1 = 'assets/images/on-boarding-1.svg';
+  static const String onboarding2 = 'assets/images/on-boarding-2.svg';
+  static const String onboarding3 = 'assets/images/on-boarding-3.svg';
 }
 
 abstract class AppIcons {
