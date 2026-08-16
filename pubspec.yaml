@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.11.0
+  sdk: ^3.11.5
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -42,10 +42,11 @@ dependencies:
   intl: any
   shared_preferences: 
   iconsax_plus: ^1.0.0
-  firebase_core: ^4.12.1
-  firebase_auth: ^6.5.6
+  firebase_core: ^4.13.0
+  firebase_auth: ^6.5.7
   fluttertoast: ^9.1.0
   cloud_firestore: ^6.7.1
+  google_sign_in: ^7.2.0
 
 
 dev_dependencies:

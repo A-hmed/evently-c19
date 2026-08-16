@@ -23,7 +23,7 @@ class EventManagmentScreen extends StatelessWidget {
       appBar: AppBar(
         leadingWidth: 80,
         leading: const CustomBackButton(),
-        title: Text(locale.addEvent),
+        title: Text(provider.isEditMode ? locale.editEvent : locale.addEvent),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -51,16 +51,19 @@ class EventManagmentScreen extends StatelessWidget {
                     ),
                   ),
                   DefaultTabController(
+                    initialIndex: Category.categories.indexOf(
+                      provider.selectedCategory,
+                    ),
                     length: Category.categories.length,
                     child: TabBar(
                       isScrollable: true,
                       tabs: Category.categories
                           .map(
                             (category) => CategoryItemWidget(
-                              category: category,
-                              isSelected: category == provider.selectedCategory,
-                            ),
-                          )
+                          category: category,
+                          isSelected: category == provider.selectedCategory,
+                        ),
+                      )
                           .toList(),
 
                       onTap: (index) {
@@ -160,17 +163,21 @@ class EventManagmentScreen extends StatelessWidget {
                   onPressed: isLoading
                       ? null
                       : () {
-                          provider.createEvent(context);
-                        },
+                    provider.submitEvent(context);
+                  },
                   child: isLoading
                       ? SizedBox(
-                          width: 24,
-                          height: 24,
-                          child: const CircularProgressIndicator(
-                            color: Colors.white,
-                          ),
-                        )
-                      : Text(locale.addEvent),
+                    width: 24,
+                    height: 24,
+                    child: const CircularProgressIndicator(
+                      color: Colors.white,
+                    ),
+                  )
+                      : Text(
+                    provider.isEditMode
+                        ? locale.updateEvent
+                        : locale.addEvent,
+                  ),
                 );
               },
             ),

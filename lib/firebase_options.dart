@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,19 +41,48 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyBKwGuE1IgWweIKvvwtVe6bRf4FcxkOmvY',
-    appId: '1:178034240777:android:45e01155184f2d410737d8',
-    messagingSenderId: '178034240777',
-    projectId: 'evently-mon-thurs',
-    storageBucket: 'evently-mon-thurs.firebasestorage.app',
+    apiKey: 'AIzaSyAfl-JoLTY7LYF9pjDxpo9dZ-JkLDIhW1Y',
+    appId: '1:857343104884:android:826f1df7e379c71daafe21',
+    messagingSenderId: '857343104884',
+    projectId: 'evently-235f3',
+    storageBucket: 'evently-235f3.firebasestorage.app',
+  );
+  static const FirebaseOptions ios = FirebaseOptions(
+    apiKey: 'AIzaSyBR6m2INbHf-OLhOVWKuYzL6sEyDOThmOQ',
+    appId: '1:857343104884:ios:df52468d6238512caafe21',
+    messagingSenderId: '857343104884',
+    projectId: 'evently-235f3',
+    storageBucket: 'evently-235f3.firebasestorage.app',
+    iosClientId: '857343104884-2gefda9ie59ehhjnev20l527lfllvdon.apps.googleusercontent.com',
+    iosBundleId: 'com.example.evently',
+  );
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyDRS5gWRhZbJHsNf-bVKDREtjzhz9ZRDGU',
+    appId: '1:857343104884:web:956c7dfc78184cc3aafe21',
+    messagingSenderId: '857343104884',
+    projectId: 'evently-235f3',
+    authDomain: 'evently-235f3.firebaseapp.com',
+    storageBucket: 'evently-235f3.firebasestorage.app',
+    measurementId: 'G-EZN16Q9ZR8',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyA-C9HLPXCjrKlzjQzo_QfpBmqvRJOyo2g',
-    appId: '1:1080671828891:ios:a63f38c208fa62b49b7f3e',
-    messagingSenderId: '1080671828891',
-    projectId: 'evently-c19',
-    storageBucket: 'evently-c19.firebasestorage.app',
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyBR6m2INbHf-OLhOVWKuYzL6sEyDOThmOQ',
+    appId: '1:857343104884:ios:df52468d6238512caafe21',
+    messagingSenderId: '857343104884',
+    projectId: 'evently-235f3',
+    storageBucket: 'evently-235f3.firebasestorage.app',
+    iosClientId: '857343104884-2gefda9ie59ehhjnev20l527lfllvdon.apps.googleusercontent.com',
     iosBundleId: 'com.example.evently',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyDRS5gWRhZbJHsNf-bVKDREtjzhz9ZRDGU',
+    appId: '1:857343104884:web:aca3c8a0addae982aafe21',
+    messagingSenderId: '857343104884',
+    projectId: 'evently-235f3',
+    authDomain: 'evently-235f3.firebaseapp.com',
+    storageBucket: 'evently-235f3.firebasestorage.app',
+    measurementId: 'G-RZ8D0MQ1XZ',
   );
 }

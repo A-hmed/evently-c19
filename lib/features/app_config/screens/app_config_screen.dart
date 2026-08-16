@@ -93,7 +93,7 @@ class AppConfigScreen extends StatelessWidget {
             const SizedBox(height: 24),
             FilledButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, RoutesName.loginScreen);
+                Navigator.pushReplacementNamed(context, RoutesName.onboardingScreen);
               },
               child: Text(l10n.letsStart),
             ),
