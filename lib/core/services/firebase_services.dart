@@ -1,6 +1,21 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:evently/core/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class FirebaseServices {
+  static Future registerUserInFirestore(UserModel user) async {
+    var collection = FirebaseFirestore.instance.collection(UserModel.collectionName);
+    collection.doc(user.id).set(user.toJson());
+  }
+
+  static Future<UserModel> getUserFromFirestore(String id) async {
+    var collection = FirebaseFirestore.instance.collection(UserModel.collectionName);
+    var docSnapshot = await collection.doc(id).get();
+    Map<String, dynamic> json = docSnapshot.data() ?? {};
+    print("user json = ${json}");
+    return UserModel.fromJson(json);
+  }
+
   static Future<User?> createAccount({
     required String email,
     required String password,
@@ -10,6 +25,16 @@ abstract class FirebaseServices {
       final credential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       await credential.user?.updateDisplayName(name);
+
+      ///Register user in firestore
+      UserModel.currentUser = UserModel(
+        id: credential.user!.uid,
+        name: name,
+        email: email,
+        favorites: [],
+      );
+      registerUserInFirestore(UserModel.currentUser!);
+
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -32,6 +57,7 @@ abstract class FirebaseServices {
         email: email,
         password: password,
       );
+      UserModel.currentUser = await getUserFromFirestore(credential.user!.uid);
       return credential.user;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

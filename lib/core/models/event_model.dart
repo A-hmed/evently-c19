@@ -1,20 +1,20 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Event {
-  String? id;
-  String? title;
-  String? description;
-  int? categoryId;
-  String? userId;
-  DateTime? dateTime;
+  late String id;
+  late String title;
+  late String description;
+  late int categoryId;
+  late String userId;
+  late DateTime dateTime;
 
   Event({
-    this.id,
-    this.title,
-    this.description,
-    this.categoryId,
-    this.userId,
-    this.dateTime,
+    required this.id,
+    required this.title,
+    required this.description,
+    required this.categoryId,
+    required this.userId,
+    required this.dateTime,
   });
 
   factory Event.fromFirestore(
@@ -22,24 +22,25 @@ class Event {
     SnapshotOptions? options,
   ) {
     final data = snapshot.data();
+    var timeStamp = data?['dateTime'] as Timestamp;
     return Event(
       id: data?['id'],
       userId: data?['userId'],
       title: data?['title'],
       description: data?['description'],
       categoryId: data?['categoryId'],
-      dateTime: data?['dateTime'],
+      dateTime: timeStamp.toDate(),
     );
   }
 
   Map<String, dynamic> toFirestore() {
     return {
-      if (id != null) "id": id,
-      if (userId != null) "userId": userId,
-      if (title != null) "title": title,
-      if (description != null) "description": description,
-      if (categoryId != null) "categoryId": categoryId,
-      if (dateTime != null) "dateTime": dateTime,
+      "id": id,
+      "userId": userId,
+      "title": title,
+      "description": description,
+      "categoryId": categoryId,
+      "dateTime": dateTime,
     };
   }
 }

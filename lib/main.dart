@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:evently/core/router/app_router.dart';
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/services/shared_pref_service.dart';
@@ -9,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:evently/core/l10n/app_localizations.dart';
-
 Future<void> main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPrefService.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);

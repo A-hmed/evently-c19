@@ -30,6 +30,7 @@ class EventManagmentProvider extends ChangeNotifier {
   }
 
   CreateEventStates state = CreateEventStates.initial;
+
   Future<void> createEvent(BuildContext context) async {
     try {
       if (titleController.text.isNotEmpty &&
@@ -52,6 +53,7 @@ class EventManagmentProvider extends ChangeNotifier {
               timeOfDay!.hour,
               timeOfDay!.minute,
             ),
+            id: '',
           ),
         );
         state = CreateEventStates.success;
