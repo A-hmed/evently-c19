@@ -3,7 +3,6 @@ import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/utils/app_assets.dart';
 import 'package:evently/features/app_config/provider/app_config_provider.dart';
 import 'package:evently/features/app_config/widgets/custom_config_row.dart';
-import 'package:evently/features/auth/providers/sign_up_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
@@ -27,7 +26,7 @@ class AppConfigScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: SvgPicture.asset(
@@ -40,7 +39,8 @@ class AppConfigScreen extends StatelessWidget {
             ),
             Text(
               l10n.personalizeYourExperience,
-              style: textTheme.titleMedium?.copyWith(fontWeight: .w600),
+              style:
+                  textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 8),
             Text(l10n.appConfigSubtitle, style: textTheme.bodyLarge),
@@ -52,7 +52,7 @@ class AppConfigScreen extends StatelessWidget {
                 l10n.english,
                 style: provider.isEn
                     ? textTheme.labelMedium?.copyWith(
-                        fontWeight: .w600,
+                        fontWeight: FontWeight.w600,
                         color: colorScheme.onPrimary,
                       )
                     : textTheme.labelMedium?.copyWith(
@@ -66,7 +66,7 @@ class AppConfigScreen extends StatelessWidget {
                 l10n.arabic,
                 style: !provider.isEn
                     ? textTheme.labelMedium?.copyWith(
-                        fontWeight: .w600,
+                        fontWeight: FontWeight.w600,
                         color: colorScheme.onPrimary,
                       )
                     : textTheme.labelMedium?.copyWith(
@@ -93,7 +93,8 @@ class AppConfigScreen extends StatelessWidget {
             const SizedBox(height: 24),
             FilledButton(
               onPressed: () {
-                Navigator.pushReplacementNamed(context, RoutesName.loginScreen);
+                Navigator.pushReplacementNamed(
+                    context, RoutesName.onboardingScreen1);
               },
               child: Text(l10n.letsStart),
             ),
@@ -104,7 +105,8 @@ class AppConfigScreen extends StatelessWidget {
     );
   }
 }
+
 /// setstate
 /// ValueNotifier -> ValueListenableBuilder()
 /// Stream contoller
-/// change notifier -> ListenableBuilder  
+/// change notifier -> ListenableBuilder

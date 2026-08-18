@@ -17,57 +17,70 @@ abstract class AppTheme {
       tertiary: AppColors.lightMainColor,
       outline: AppColors.lightStroke,
     ),
-
     textTheme: GoogleFonts.poppinsTextTheme(
       TextTheme(
         titleLarge: TextStyle(
           fontSize: 24,
-          fontWeight: .bold,
+          fontWeight: FontWeight.bold,
           color: AppColors.lightMainColor,
         ),
         titleMedium: TextStyle(
           fontSize: 20,
-          fontWeight: .bold,
+          fontWeight: FontWeight.bold,
           color: AppColors.lightMainText,
         ),
         titleSmall: TextStyle(
           fontSize: 18,
-          fontWeight: .bold,
+          fontWeight: FontWeight.bold,
           color: AppColors.lightMainText,
         ),
         bodyLarge: TextStyle(
           fontSize: 16,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.lightSecText,
         ),
         bodyMedium: TextStyle(
           fontSize: 14,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.lightSecText,
         ),
         bodySmall: TextStyle(
           fontSize: 12,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.lightSecText,
         ),
         labelLarge: TextStyle(
           fontSize: 20,
-          fontWeight: .w500,
+          fontWeight: FontWeight.w500,
           color: AppColors.lightInputs,
         ),
         labelMedium: TextStyle(
           fontSize: 14,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.lightMainText,
         ),
         labelSmall: TextStyle(
           fontSize: 14,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
+          color: AppColors.lightMainText,
+        ),
+        displaySmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: AppColors.lightMainColor,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: AppColors.lightSecText,
+        ),
+        displayLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
           color: AppColors.lightMainText,
         ),
       ),
     ),
-
     tabBarTheme: TabBarThemeData(
       tabAlignment: TabAlignment.start,
       indicatorColor: Colors.transparent,
@@ -77,40 +90,37 @@ abstract class AppTheme {
       unselectedLabelColor: AppColors.lightMainText,
       labelStyle: GoogleFonts.poppins(
         fontSize: 16,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
         color: AppColors.lightInputs,
       ),
       unselectedLabelStyle: GoogleFonts.poppins(
         fontSize: 16,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
         color: AppColors.lightMainText,
       ),
       labelPadding: const EdgeInsetsGeometry.only(right: 8),
     ),
-
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.lightInputs,
       selectedItemColor: AppColors.lightMainColor,
       unselectedItemColor: AppColors.lightDisable,
       selectedLabelStyle: GoogleFonts.poppins(
         fontSize: 12,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         color: AppColors.lightMainColor,
       ),
       unselectedLabelStyle: GoogleFonts.poppins(
         fontSize: 12,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         color: AppColors.lightMainText,
       ),
       type: BottomNavigationBarType.fixed,
     ),
-
     disabledColor: AppColors.lightStroke,
     dividerTheme: const DividerThemeData(
       thickness: 1,
       color: AppColors.lightStroke,
     ),
-
     appBarTheme: AppBarThemeData(
       backgroundColor: AppColors.lightBackground,
       foregroundColor: AppColors.lightMainText,
@@ -119,11 +129,10 @@ abstract class AppTheme {
       scrolledUnderElevation: 0,
       titleTextStyle: const TextStyle(
         fontSize: 18,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
         color: AppColors.lightMainText,
       ),
     ),
-
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.lightInputs,
@@ -131,12 +140,12 @@ abstract class AppTheme {
       suffixIconColor: AppColors.lightDisable,
       hintStyle: GoogleFonts.poppins(
         color: AppColors.lightSecText,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         fontSize: 14,
       ),
       labelStyle: GoogleFonts.poppins(
         color: AppColors.lightSecText,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         fontSize: 14,
       ),
       border: OutlineInputBorder(
@@ -160,12 +169,11 @@ abstract class AppTheme {
         borderSide: const BorderSide(color: AppColors.lightRed, width: 1),
       ),
     ),
-
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: TextStyle(
           fontSize: 14,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.lightMainColor,
           decoration: TextDecoration.underline,
           decorationColor: AppColors.lightMainColor,
@@ -173,13 +181,11 @@ abstract class AppTheme {
         ),
       ),
     ),
-
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.lightMainColor,
       foregroundColor: AppColors.lightInputs,
       shape: const CircleBorder(),
     ),
-
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         backgroundColor: AppColors.lightMainColor,
@@ -190,12 +196,11 @@ abstract class AppTheme {
         minimumSize: const Size(double.infinity, 56),
         textStyle: TextStyle(
           fontSize: 20,
-          fontWeight: .w500,
+          fontWeight: FontWeight.w500,
           color: AppColors.lightInputs,
         ),
       ),
     ),
-
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         backgroundColor: AppColors.lightInputs,
@@ -207,7 +212,7 @@ abstract class AppTheme {
         minimumSize: const Size(double.infinity, 56),
         textStyle: TextStyle(
           fontSize: 20,
-          fontWeight: .w500,
+          fontWeight: FontWeight.w500,
           color: AppColors.lightMainColor,
         ),
       ),
@@ -228,7 +233,6 @@ abstract class AppTheme {
       tertiary: AppColors.darkMainText,
       outline: AppColors.darkStroke,
     ),
-
     textTheme: GoogleFonts.poppinsTextTheme(
       TextTheme(
         titleLarge: TextStyle(
@@ -276,9 +280,23 @@ abstract class AppTheme {
           fontWeight: FontWeight.normal,
           color: AppColors.darkMainText,
         ),
+        displaySmall: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w600,
+          color: AppColors.darkMainColor,
+        ),
+        displayMedium: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: AppColors.darkSecText,
+        ),
+        displayLarge: TextStyle(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: AppColors.darkMainText,
+        ),
       ),
     ),
-
     tabBarTheme: TabBarThemeData(
       tabAlignment: TabAlignment.start,
       indicatorColor: Colors.transparent,
@@ -288,34 +306,32 @@ abstract class AppTheme {
       unselectedLabelColor: AppColors.darkMainText,
       labelStyle: GoogleFonts.poppins(
         fontSize: 16,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
         color: AppColors.darkInputs,
       ),
       unselectedLabelStyle: GoogleFonts.poppins(
         fontSize: 16,
-        fontWeight: .w500,
+        fontWeight: FontWeight.w500,
         color: AppColors.darkMainText,
       ),
       labelPadding: const EdgeInsetsGeometry.only(right: 8),
     ),
-
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: AppColors.darkInputs,
       selectedItemColor: AppColors.darkMainColor,
       unselectedItemColor: AppColors.darkDisable,
       selectedLabelStyle: GoogleFonts.poppins(
         fontSize: 12,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         color: AppColors.darkMainColor,
       ),
       unselectedLabelStyle: GoogleFonts.poppins(
         fontSize: 12,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         color: AppColors.darkMainText,
       ),
       type: BottomNavigationBarType.fixed,
     ),
-
     appBarTheme: AppBarThemeData(
       backgroundColor: AppColors.darkBackground,
       foregroundColor: AppColors.darkMainText,
@@ -328,7 +344,6 @@ abstract class AppTheme {
         color: AppColors.darkMainText,
       ),
     ),
-
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: AppColors.darkInputs,
@@ -336,12 +351,12 @@ abstract class AppTheme {
       suffixIconColor: AppColors.darkDisable,
       hintStyle: GoogleFonts.poppins(
         color: AppColors.darkSecText,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         fontSize: 14,
       ),
       labelStyle: GoogleFonts.poppins(
         color: AppColors.darkSecText,
-        fontWeight: .normal,
+        fontWeight: FontWeight.normal,
         fontSize: 14,
       ),
       border: OutlineInputBorder(
@@ -365,18 +380,16 @@ abstract class AppTheme {
         borderSide: const BorderSide(color: AppColors.darkRed, width: 1),
       ),
     ),
-
     dividerColor: AppColors.darkStroke,
     dividerTheme: const DividerThemeData(
       thickness: 1,
       color: AppColors.darkStroke,
     ),
-
     textButtonTheme: TextButtonThemeData(
       style: TextButton.styleFrom(
         textStyle: TextStyle(
           fontSize: 14,
-          fontWeight: .normal,
+          fontWeight: FontWeight.normal,
           color: AppColors.darkMainColor,
           decoration: TextDecoration.underline,
           decorationColor: AppColors.darkMainColor,
@@ -384,13 +397,11 @@ abstract class AppTheme {
         ),
       ),
     ),
-
     floatingActionButtonTheme: FloatingActionButtonThemeData(
       backgroundColor: AppColors.darkMainColor,
       foregroundColor: AppColors.darkInputs,
       shape: const CircleBorder(),
     ),
-
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         backgroundColor: AppColors.darkMainColor,
@@ -401,7 +412,6 @@ abstract class AppTheme {
         textStyle: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
       ),
     ),
-
     outlinedButtonTheme: OutlinedButtonThemeData(
       style: OutlinedButton.styleFrom(
         backgroundColor: AppColors.darkInputs,

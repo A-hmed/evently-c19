@@ -27,7 +27,7 @@ class CustomConfigRow extends StatelessWidget {
         Text(
           title,
           style: textTheme.titleSmall?.copyWith(
-            fontWeight: .w500,
+            fontWeight: FontWeight.w500,
             color: colorScheme.primary,
           ),
         ),

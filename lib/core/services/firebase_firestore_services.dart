@@ -7,12 +7,11 @@ class FirebaseFirestoreServices {
   static final FirebaseFirestore db = FirebaseFirestore.instance;
 
   static CollectionReference<Event> getEventCollectionRef() {
-    var eventsCollection = db
-        .collection(AppConstans.eventCollection)
-        .withConverter(
-          fromFirestore: Event.fromFirestore,
-          toFirestore: (Event event, _) => event.toFirestore(),
-        );
+    var eventsCollection =
+        db.collection(AppConstans.eventCollection).withConverter(
+              fromFirestore: Event.fromFirestore,
+              toFirestore: (Event event, _) => event.toFirestore(),
+            );
     return eventsCollection;
   }
 
@@ -61,7 +60,10 @@ class FirebaseFirestoreServices {
         .update({"favorites": favorites});
   }
 
-  static Stream<List<Event>>? getFavoriteEvents() {
+  static Stream<List<Event>> getFavoriteEvents() {
+    if (UserModel.currentUser.favorites.isEmpty) {
+      return Stream.value([]);
+    }
     var streamQuerySnapShot = getEventCollectionRef()
         .where("id", whereIn: UserModel.currentUser.favorites)
         .snapshots();

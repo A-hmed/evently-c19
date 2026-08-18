@@ -19,7 +19,7 @@ class LanguageBottomSheet extends StatelessWidget {
         child: Column(
           spacing: 16,
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(locale.language, style: textTheme.titleLarge),
             ProfileActionWidget(

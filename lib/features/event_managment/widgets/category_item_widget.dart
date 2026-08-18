@@ -25,8 +25,8 @@ class CategoryItemWidget extends StatelessWidget {
       ),
       child: Row(
         spacing: 8,
-        mainAxisSize: .min,
-        mainAxisAlignment: .center,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(
             category.icon,

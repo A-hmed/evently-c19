@@ -48,11 +48,10 @@ class _EventWidgetState extends State<EventWidget> {
               "${widget.event.dateTime.day} ${shortMonth}",
               style: theme.textTheme.titleLarge!.copyWith(
                 fontSize: 16,
-                fontWeight: .w600,
+                fontWeight: FontWeight.w600,
               ),
             ),
           ),
-
           Container(
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(

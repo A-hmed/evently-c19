@@ -12,6 +12,8 @@ abstract class FirebaseServices {
     var collection = FirebaseFirestore.instance.collection(UserModel.collectionName);
     var docSnapshot = await collection.doc(id).get();
     Map<String, dynamic> json = docSnapshot.data() ?? {};
+    // ensure document id is present in the json (firestore often stores id as doc id)
+    json['id'] = json['id'] ?? docSnapshot.id;
     print("user json = ${json}");
     return UserModel.fromJson(json);
   }

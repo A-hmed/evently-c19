@@ -14,10 +14,16 @@ class UserModel {
   });
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    id = json["id"];
-    name = json["name"];
-    email = json["email"];
-    favorites = (json["favorites"] as List<dynamic>).map((id) => id.toString()).toList();
+    // parse with safety: convert to strings and provide defaults when null
+    id = json["id"]?.toString() ?? '';
+    name = json["name"]?.toString() ?? '';
+    email = json["email"]?.toString() ?? '';
+    final favRaw = json["favorites"];
+    if (favRaw is List) {
+      favorites = favRaw.map((e) => e?.toString() ?? '').where((s) => s.isNotEmpty).toList();
+    } else {
+      favorites = [];
+    }
   }
 
   Map<String, dynamic> toJson() {

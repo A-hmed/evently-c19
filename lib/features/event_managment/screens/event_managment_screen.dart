@@ -28,7 +28,7 @@ class EventManagmentScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
             const SizedBox(height: 16),
@@ -46,7 +46,7 @@ class EventManagmentScreen extends StatelessWidget {
                       border: Border.all(color: colorScheme.outline, width: 1),
                       image: DecorationImage(
                         image: AssetImage(provider.selectedCategory.imageLight),
-                        fit: .cover,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
@@ -62,7 +62,6 @@ class EventManagmentScreen extends StatelessWidget {
                             ),
                           )
                           .toList(),
-
                       onTap: (index) {
                         provider.changeCategory(Category.categories[index]);
                       },
@@ -74,7 +73,6 @@ class EventManagmentScreen extends StatelessWidget {
             const SizedBox(height: 16),
             const CreateEventForm(),
             const SizedBox(height: 16),
-
             Row(
               children: [
                 Icon(

@@ -19,7 +19,7 @@ class SignUpScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
                 alignment: AlignmentDirectional.center,
@@ -31,7 +31,8 @@ class SignUpScreen extends StatelessWidget {
               const SizedBox(height: 48),
               Text(
                 locale.createYourAccount,
-                style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
+                style:
+                    textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
               const SignUpFormWidget(),
@@ -56,7 +57,7 @@ class SignUpScreen extends StatelessWidget {
               ),
               const SizedBox(height: 24),
               Row(
-                mainAxisAlignment: .center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(locale.alreadyHaveAccount),
                   TextButton(onPressed: () {}, child: Text(locale.login)),
@@ -68,10 +69,10 @@ class SignUpScreen extends StatelessWidget {
               OutlinedButton(
                 onPressed: () {},
                 child: Row(
-                  mainAxisAlignment: .center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 16,
                   children: [
-                    SvgPicture.asset(AppIcons.google, fit: .scaleDown),
+                    SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
                     Text(locale.loginWithGoogle),
                   ],
                 ),

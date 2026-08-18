@@ -11,24 +11,31 @@ import 'package:evently/features/splash/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../features/assignment11_folder/onboarding/screens/onboarding_screen_1.dart';
+import '../../features/assignment11_folder/onboarding/screens/onboarding_screen_2.dart';
+import '../../features/assignment11_folder/onboarding/screens/onboarding_screen_3.dart';
+
 abstract class AppRouter {
   static Map<String, Widget Function(BuildContext)> routes() {
     return {
       RoutesName.splash: (_) => const SplashScreen(),
       RoutesName.appConfigScreen: (_) => const AppConfigScreen(),
       RoutesName.loginScreen: (_) => ChangeNotifierProvider(
-        create: (context) => LoginProvider(),
-        child: const LoginScreen(),
-      ),
+            create: (context) => LoginProvider(),
+            child: const LoginScreen(),
+          ),
       RoutesName.signUpScreen: (_) => ChangeNotifierProvider(
-        create: (context) => SignUpProvider(),
-        child: const SignUpScreen(),
-      ),
+            create: (context) => SignUpProvider(),
+            child: const SignUpScreen(),
+          ),
       RoutesName.mainLayoutScreen: (_) => const MainLayoutScreen(),
       RoutesName.eventManagmentScreen: (_) => ChangeNotifierProvider(
-        create: (context) => EventManagmentProvider(),
-        child: const EventManagmentScreen(),
-      ),
+            create: (context) => EventManagmentProvider(),
+            child: const EventManagmentScreen(),
+          ),
+      RoutesName.onboardingScreen1: (_) => const OnboardingScreen1(),
+      RoutesName.onboardingScreen2: (_) => const OnboardingScreen2(),
+      RoutesName.onboardingScreen3: (_) => const OnboardingScreen3(),
     };
   }
 }

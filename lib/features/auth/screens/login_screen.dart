@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
                 alignment: AlignmentDirectional.center,
@@ -32,7 +32,8 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 48),
               Text(
                 locale.loginToYourAccount,
-                style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
+                style:
+                    textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
               const LoginFormWidget(),
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     locale.forgotPassword,
-                    style: const TextStyle(fontWeight: .w600),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
               Row(
-                mainAxisAlignment: .center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(locale.dontHaveAccount),
                   TextButton(
@@ -81,10 +82,10 @@ class LoginScreen extends StatelessWidget {
               OutlinedButton(
                 onPressed: () {},
                 child: Row(
-                  mainAxisAlignment: .center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   spacing: 16,
                   children: [
-                    SvgPicture.asset(AppIcons.google, fit: .scaleDown),
+                    SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
                     Text(locale.loginWithGoogle),
                   ],
                 ),

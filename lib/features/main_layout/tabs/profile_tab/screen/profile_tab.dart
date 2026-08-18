@@ -29,13 +29,14 @@ class ProfileTab extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               FirebaseAuth.instance.currentUser?.displayName ?? "",
-              textAlign: .center,
-              style: textTheme.titleMedium?.copyWith(fontWeight: .w600),
+              textAlign: TextAlign.center,
+              style:
+                  textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 8),
             Text(
               FirebaseAuth.instance.currentUser?.email ?? "",
-              textAlign: .center,
+              textAlign: TextAlign.center,
               style: textTheme.bodyMedium,
             ),
             const SizedBox(height: 32),
