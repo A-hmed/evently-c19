@@ -28,6 +28,17 @@ class FirebaseFirestoreServices {
     }
   }
 
+  static Future<void> updateEvent(Event event) async {
+    try {
+      final ref = getEventCollectionRef();
+      final document = ref.doc(event.id);
+
+      await document.update(event.toFirestore());
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   static Stream<List<Event>> getEventsList() {
     var streamQuerySnapShot = getEventCollectionRef().snapshots();
     return streamQuerySnapShot.map((querySnapShot) {
