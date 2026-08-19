@@ -79,17 +79,31 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const OrDividerWidget(),
               const SizedBox(height: 24),
-              OutlinedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  spacing: 16,
-                  children: [
-                    SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
-                    Text(locale.loginWithGoogle),
-                  ],
-                ),
-              ),
+              Consumer<LoginProvider>(builder: (context, provider, child) {
+                return OutlinedButton(
+                  onPressed: () async {
+                    try {
+                      final userCredential = await provider.signInWithGoogle();
+                      if (userCredential != null) {
+                        Navigator.pushReplacementNamed(
+                            context, RoutesName.mainLayoutScreen);
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Error: $e')),
+                      );
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 16,
+                    children: [
+                      SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
+                      Text(locale.loginWithGoogle),
+                    ],
+                  ),
+                );
+              }),
             ],
           ),
         ),

@@ -24,8 +24,11 @@ abstract class AppRouter {
             create: (context) => LoginProvider(),
             child: const LoginScreen(),
           ),
-      RoutesName.signUpScreen: (_) => ChangeNotifierProvider(
-            create: (context) => SignUpProvider(),
+      RoutesName.signUpScreen: (_) => MultiProvider(
+            providers: [
+              ChangeNotifierProvider(create: (context) => LoginProvider()),
+              ChangeNotifierProvider(create: (context) => SignUpProvider()),
+            ],
             child: const SignUpScreen(),
           ),
       RoutesName.mainLayoutScreen: (_) => const MainLayoutScreen(),

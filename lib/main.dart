@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:evently/core/l10n/app_localizations.dart';
 import 'package:evently/core/router/app_router.dart';
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/services/shared_pref_service.dart';
@@ -9,14 +10,18 @@ import 'package:evently/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
-import 'package:evently/core/l10n/app_localizations.dart';
-Future<void> main() async {
 
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SharedPrefService.init();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp( EventlyApp());
+  await GoogleSignIn.instance.initialize(
+    serverClientId:
+        '541581553358-1srr2ffr0nlub9p98rstdpt638g38qlj.apps.googleusercontent.com',
+  );
+  await SharedPrefService.init();
+  runApp(EventlyApp());
 }
 
 class EventlyApp extends StatelessWidget {

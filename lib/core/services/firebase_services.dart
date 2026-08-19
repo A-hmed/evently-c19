@@ -1,15 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:evently/core/models/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class FirebaseServices {
   static Future registerUserInFirestore(UserModel user) async {
-    var collection = FirebaseFirestore.instance.collection(UserModel.collectionName);
+    var collection =
+        FirebaseFirestore.instance.collection(UserModel.collectionName);
     collection.doc(user.id).set(user.toJson());
   }
 
   static Future<UserModel> getUserFromFirestore(String id) async {
-    var collection = FirebaseFirestore.instance.collection(UserModel.collectionName);
+    var collection =
+        FirebaseFirestore.instance.collection(UserModel.collectionName);
     var docSnapshot = await collection.doc(id).get();
     Map<String, dynamic> json = docSnapshot.data() ?? {};
     // ensure document id is present in the json (firestore often stores id as doc id)
@@ -48,6 +51,47 @@ abstract class FirebaseServices {
       rethrow;
     }
     return null;
+  }
+
+  static Future<User?> signInWithGoogle() async {
+    try {
+      final GoogleSignInAccount googleUser =
+          await GoogleSignIn.instance.authenticate();
+
+      final GoogleSignInAuthentication googleAuth = googleUser.authentication;
+
+      final oauthCredential = GoogleAuthProvider.credential(
+        idToken: googleAuth.idToken,
+      );
+
+      final userCredential =
+          await FirebaseAuth.instance.signInWithCredential(oauthCredential);
+      final user = userCredential.user!;
+
+      final bool isNewUser =
+          userCredential.additionalUserInfo?.isNewUser ?? false;
+
+      if (isNewUser) {
+        UserModel.currentUser = UserModel(
+          id: user.uid,
+          name: user.displayName ?? '',
+          email: user.email ?? '',
+          favorites: [],
+        );
+        await registerUserInFirestore(UserModel.currentUser!);
+      } else {
+        UserModel.currentUser = await getUserFromFirestore(user.uid);
+      }
+
+      return user;
+    } on GoogleSignInException catch (e) {
+      if (e.code == GoogleSignInExceptionCode.canceled) return null;
+      rethrow;
+    } on FirebaseAuthException catch (e) {
+      rethrow;
+    } catch (e) {
+      rethrow;
+    }
   }
 
   static Future<User?> login({

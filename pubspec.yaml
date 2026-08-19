@@ -47,6 +47,7 @@ dependencies:
   fluttertoast:
   cloud_firestore:
   smooth_page_indicator:
+  google_sign_in:
 
 
 dev_dependencies:
