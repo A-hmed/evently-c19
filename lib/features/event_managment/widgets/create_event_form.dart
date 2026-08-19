@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CreateEventForm extends StatelessWidget {
-  const CreateEventForm({super.key});
+  const CreateEventForm({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,9 +41,8 @@ class CreateEventForm extends StatelessWidget {
         ),
         const SizedBox(height: 8),
         CustomTextFormField(
-          controller: context
-              .read<EventManagmentProvider>()
-              .descriptionController,
+          controller:
+              context.read<EventManagmentProvider>().descriptionController,
           keyboardType: TextInputType.text,
           textInputAction: TextInputAction.done,
           hintText: locale.eventDescription,

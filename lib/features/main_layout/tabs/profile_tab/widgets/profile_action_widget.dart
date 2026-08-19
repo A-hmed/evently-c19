@@ -25,12 +25,12 @@ class ProfileActionWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         child: Row(
-          mainAxisAlignment: .spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
               title,
               style: textTheme.bodyLarge?.copyWith(
-                fontWeight: .w500,
+                fontWeight: FontWeight.w500,
                 color: colorScheme.secondary,
               ),
             ),

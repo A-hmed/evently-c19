@@ -7,12 +7,11 @@ class FirebaseFirestoreServices {
   static final FirebaseFirestore db = FirebaseFirestore.instance;
 
   static CollectionReference<Event> getEventCollectionRef() {
-    var eventsCollection = db
-        .collection(AppConstans.eventCollection)
-        .withConverter(
-          fromFirestore: Event.fromFirestore,
-          toFirestore: (Event event, _) => event.toFirestore(),
-        );
+    var eventsCollection =
+        db.collection(AppConstans.eventCollection).withConverter(
+              fromFirestore: Event.fromFirestore,
+              toFirestore: (Event event, _) => event.toFirestore(),
+            );
     return eventsCollection;
   }
 
@@ -24,6 +23,17 @@ class FirebaseFirestoreServices {
       ///Create a new document with auto generated id
       event.id = document.id;
       await document.set(event);
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<void> updateEvent(Event event) async {
+    try {
+      final ref = getEventCollectionRef();
+      final document = ref.doc(event.id);
+
+      await document.update(event.toFirestore());
     } catch (e) {
       throw e.toString();
     }
@@ -61,7 +71,10 @@ class FirebaseFirestoreServices {
         .update({"favorites": favorites});
   }
 
-  static Stream<List<Event>>? getFavoriteEvents() {
+  static Stream<List<Event>> getFavoriteEvents() {
+    if (UserModel.currentUser.favorites.isEmpty) {
+      return Stream.value([]);
+    }
     var streamQuerySnapShot = getEventCollectionRef()
         .where("id", whereIn: UserModel.currentUser.favorites)
         .snapshots();

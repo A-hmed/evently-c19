@@ -13,9 +13,9 @@ class OrDividerWidget extends StatelessWidget {
         Text(
           locale.or,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-            color: Theme.of(context).colorScheme.primary,
-            fontWeight: .w500,
-          ),
+                color: Theme.of(context).colorScheme.primary,
+                fontWeight: FontWeight.w500,
+              ),
         ),
         const Expanded(child: Divider(endIndent: 16, indent: 16)),
       ],

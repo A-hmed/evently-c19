@@ -1,5 +1,6 @@
 import 'package:evently/core/router/routes_name.dart';
 import 'package:evently/core/services/firebase_services.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
@@ -51,5 +52,9 @@ class LoginProvider extends ChangeNotifier {
         notifyListeners();
       }
     }
+  }
+
+  Future<User?> signInWithGoogle() async {
+    return await FirebaseServices.signInWithGoogle();
   }
 }

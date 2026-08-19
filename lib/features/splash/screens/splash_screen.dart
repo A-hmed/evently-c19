@@ -18,7 +18,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     Future.delayed(const Duration(seconds: 3), () async {
       if (context.mounted) {
-        if (FirebaseAuth.instance.currentUser != null) {
+        if (FirebaseAuth.instance.currentUser != null &&
+            FirebaseAuth.instance.currentUser != '') {
           UserModel.currentUser = await FirebaseServices.getUserFromFirestore(
             FirebaseAuth.instance.currentUser!.uid,
           );
@@ -38,7 +39,7 @@ class _SplashScreenState extends State<SplashScreen> {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          mainAxisAlignment: .spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Row(),
             Image.asset(AppImages.logo, width: width * .8),

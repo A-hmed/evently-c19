@@ -1,16 +1,19 @@
-import 'package:evently/core/l10n/app_localizations.dart';
-import 'package:evently/core/models/category_model.dart';
-import 'package:evently/core/widgets/custom_back_button.dart';
-import 'package:evently/features/event_managment/providers/event_managment_provider.dart';
-import 'package:evently/features/event_managment/widgets/category_item_widget.dart';
-import 'package:evently/features/event_managment/widgets/create_event_form.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
-class EventManagmentScreen extends StatelessWidget {
-  const EventManagmentScreen({super.key});
+import '../../../../../core/l10n/app_localizations.dart';
+import '../../../../../core/models/category_model.dart';
+import '../../../../../core/models/event_model.dart';
+import '../../../../../core/widgets/custom_back_button.dart';
+import '../../../../event_managment/providers/event_managment_provider.dart';
+import '../../../../event_managment/widgets/category_item_widget.dart';
+import '../../../../event_managment/widgets/create_event_form.dart';
+
+class EditEventScreen extends StatelessWidget {
+  final Event event;
+  const EditEventScreen({super.key, required this.event});
 
   @override
   Widget build(BuildContext context) {
@@ -18,22 +21,26 @@ class EventManagmentScreen extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final provider = context.read<EventManagmentProvider>();
     final locale = AppLocalizations.of(context)!;
+    provider.selectedCategory = Category.getCategoryById(event.categoryId);
+    provider.titleController.text = event.title;
+    provider.descriptionController.text = event.description;
+    provider.changeDate(event.dateTime);
+    provider.changeTime(TimeOfDay.fromDateTime(event.dateTime));
 
     return Scaffold(
       appBar: AppBar(
         leadingWidth: 80,
         leading: const CustomBackButton(),
-        title: Text(locale.addEvent),
+        title: Text('Edit Event'),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 16),
-            const SizedBox(height: 16),
             Consumer<EventManagmentProvider>(
-              builder: (context, provider, child) => Column(
+                builder: (context, provider, child) {
+              return Column(
                 spacing: 16,
                 children: [
                   AnimatedContainer(
@@ -68,10 +75,10 @@ class EventManagmentScreen extends StatelessWidget {
                     ),
                   ),
                 ],
-              ),
-            ),
+              );
+            }),
             const SizedBox(height: 16),
-            const CreateEventForm(),
+            CreateEventForm(),
             const SizedBox(height: 16),
             Row(
               children: [
@@ -103,8 +110,6 @@ class EventManagmentScreen extends StatelessWidget {
                         );
 
                         if (date != null) provider.changeDate(date);
-
-                        print(date);
                       },
                       child: Text(
                         dateTime == null
@@ -158,7 +163,7 @@ class EventManagmentScreen extends StatelessWidget {
                   onPressed: isLoading
                       ? null
                       : () {
-                          provider.createEvent(context);
+                          provider.updateEvent(context, event.id);
                         },
                   child: isLoading
                       ? SizedBox(
@@ -168,7 +173,7 @@ class EventManagmentScreen extends StatelessWidget {
                             color: Colors.white,
                           ),
                         )
-                      : Text(locale.addEvent),
+                      : Text('Update Event'),
                 );
               },
             ),

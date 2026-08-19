@@ -20,7 +20,7 @@ class LoginScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment: .start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Align(
                 alignment: AlignmentDirectional.center,
@@ -32,7 +32,8 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 48),
               Text(
                 locale.loginToYourAccount,
-                style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
+                style:
+                    textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
               const LoginFormWidget(),
@@ -42,7 +43,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     locale.forgotPassword,
-                    style: const TextStyle(fontWeight: .w600),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
@@ -61,7 +62,7 @@ class LoginScreen extends StatelessWidget {
                 },
               ),
               Row(
-                mainAxisAlignment: .center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(locale.dontHaveAccount),
                   TextButton(
@@ -78,17 +79,31 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const OrDividerWidget(),
               const SizedBox(height: 24),
-              OutlinedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: .center,
-                  spacing: 16,
-                  children: [
-                    SvgPicture.asset(AppIcons.google, fit: .scaleDown),
-                    Text(locale.loginWithGoogle),
-                  ],
-                ),
-              ),
+              Consumer<LoginProvider>(builder: (context, provider, child) {
+                return OutlinedButton(
+                  onPressed: () async {
+                    try {
+                      final userCredential = await provider.signInWithGoogle();
+                      if (userCredential != null) {
+                        Navigator.pushReplacementNamed(
+                            context, RoutesName.mainLayoutScreen);
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text('Error: $e')),
+                      );
+                    }
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    spacing: 16,
+                    children: [
+                      SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
+                      Text(locale.loginWithGoogle),
+                    ],
+                  ),
+                );
+              }),
             ],
           ),
         ),

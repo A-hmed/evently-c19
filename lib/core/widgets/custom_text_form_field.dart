@@ -12,6 +12,7 @@ class CustomTextFormField extends StatefulWidget {
   final Icon? prefixIcon;
   final bool isPassword;
   final int maxLines;
+  final String? text;
 
   const CustomTextFormField({
     super.key,
@@ -25,6 +26,7 @@ class CustomTextFormField extends StatefulWidget {
     this.prefixIcon,
     this.isPassword = false,
     this.maxLines = 1,
+    this.text,
   });
 
   @override
