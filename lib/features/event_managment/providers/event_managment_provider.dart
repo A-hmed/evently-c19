@@ -81,4 +81,88 @@ class EventManagmentProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  Future<void> updateEvent(BuildContext context, String eventId) async {
+    try {
+      if (titleController.text.isNotEmpty &&
+          descriptionController.text.isNotEmpty &&
+          timeOfDay != null &&
+          selectedDate != null) {
+        state = CreateEventStates.loading;
+        notifyListeners();
+
+        await FirebaseFirestoreServices.updateEvent(
+          Event(
+            id: eventId,
+            title: titleController.text,
+            description: descriptionController.text,
+            categoryId: selectedCategory.id,
+            userId: FirebaseAuth.instance.currentUser?.uid ?? "",
+            dateTime: DateTime(
+              selectedDate!.year,
+              selectedDate!.month,
+              selectedDate!.day,
+              timeOfDay!.hour,
+              timeOfDay!.minute,
+            ),
+          ),
+        );
+        state = CreateEventStates.success;
+        notifyListeners();
+        Fluttertoast.showToast(
+          msg: "Event updated successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+        if (context.mounted) Navigator.pop(context);
+      }
+    } catch (e) {
+      state = CreateEventStates.failure;
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      notifyListeners();
+    }
+  }
+
+  Future<void> deleteEvent(BuildContext context, String eventId) async {
+    try {
+      state = CreateEventStates.loading;
+      notifyListeners();
+
+      await FirebaseFirestoreServices.deleteEvent(eventId);
+      
+      state = CreateEventStates.success;
+      notifyListeners();
+      
+      Fluttertoast.showToast(
+        msg: "Event deleted successfully",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.green,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      if (context.mounted) Navigator.pop(context);
+    } catch (e) {
+      state = CreateEventStates.failure;
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      notifyListeners();
+    }
+  }
 }

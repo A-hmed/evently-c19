@@ -27,7 +27,7 @@ class AppConfigScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: SvgPicture.asset(
@@ -40,7 +40,7 @@ class AppConfigScreen extends StatelessWidget {
             ),
             Text(
               l10n.personalizeYourExperience,
-              style: textTheme.titleMedium?.copyWith(fontWeight: .w600),
+              style: textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 8),
             Text(l10n.appConfigSubtitle, style: textTheme.bodyLarge),
@@ -52,7 +52,7 @@ class AppConfigScreen extends StatelessWidget {
                 l10n.english,
                 style: provider.isEn
                     ? textTheme.labelMedium?.copyWith(
-                        fontWeight: .w600,
+                        fontWeight: FontWeight.w600,
                         color: colorScheme.onPrimary,
                       )
                     : textTheme.labelMedium?.copyWith(
@@ -66,7 +66,7 @@ class AppConfigScreen extends StatelessWidget {
                 l10n.arabic,
                 style: !provider.isEn
                     ? textTheme.labelMedium?.copyWith(
-                        fontWeight: .w600,
+                        fontWeight: FontWeight.w600,
                         color: colorScheme.onPrimary,
                       )
                     : textTheme.labelMedium?.copyWith(

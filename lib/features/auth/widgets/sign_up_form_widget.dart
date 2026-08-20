@@ -15,8 +15,17 @@ class SignUpFormWidget extends StatelessWidget {
     return Form(
       key: context.read<SignUpProvider>().formKey,
       child: Column(
-        spacing: 8,
         children: [
+          CustomTextFormField(
+            controller: context.read<SignUpProvider>().nameController,
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+            lableText: locale.name,
+            hintText: locale.enterYourName,
+            prefixIcon: const Icon(IconsaxPlusLinear.user),
+            validator: (value) => AppValidator.nameValidator(value, locale),
+          ),
+          const SizedBox(height: 8),
           CustomTextFormField(
             controller: context.read<SignUpProvider>().nameController,
             keyboardType: TextInputType.text,
@@ -35,6 +44,7 @@ class SignUpFormWidget extends StatelessWidget {
             prefixIcon: const Icon(IconsaxPlusLinear.sms),
             validator: (value) => AppValidator.emailValidator(value, locale),
           ),
+          const SizedBox(height: 8),
           CustomTextFormField(
             controller: context.read<SignUpProvider>().passwordController,
             keyboardType: TextInputType.visiblePassword,
@@ -45,6 +55,7 @@ class SignUpFormWidget extends StatelessWidget {
             prefixIcon: const Icon(IconsaxPlusLinear.lock),
             validator: (value) => AppValidator.passwordValidator(value, locale),
           ),
+          const SizedBox(height: 8),
           CustomTextFormField(
             controller: context
                 .read<SignUpProvider>()
