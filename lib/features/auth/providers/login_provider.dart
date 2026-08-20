@@ -52,4 +52,43 @@ class LoginProvider extends ChangeNotifier {
       }
     }
   }
+
+  Future<void> loginWithGoogle(BuildContext context) async {
+    try {
+      loginStates = LoginStates.loading;
+      notifyListeners();
+
+      final user = await FirebaseServices.signInWithGoogle();
+
+      if (user != null) {
+        loginStates = LoginStates.success;
+        if (context.mounted) {
+          Navigator.pushReplacementNamed(context, RoutesName.mainLayoutScreen);
+        }
+
+        Fluttertoast.showToast(
+          msg: "Logged in successfully",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.BOTTOM,
+          backgroundColor: Colors.green,
+          textColor: Colors.white,
+          fontSize: 16.0,
+        );
+      } else {
+        loginStates = LoginStates.initial;
+      }
+      notifyListeners();
+    } catch (e) {
+      loginStates = LoginStates.failure;
+      Fluttertoast.showToast(
+        msg: e.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
+      notifyListeners();
+    }
+  }
 }

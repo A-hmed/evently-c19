@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 48),
               Text(
                 locale.loginToYourAccount,
-                style: textTheme.titleLarge?.copyWith(fontWeight: .w600),
+                style: textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600),
               ),
               const SizedBox(height: 24),
               const LoginFormWidget(),
@@ -42,7 +42,7 @@ class LoginScreen extends StatelessWidget {
                   onPressed: () {},
                   child: Text(
                     locale.forgotPassword,
-                    style: const TextStyle(fontWeight: .w600),
+                    style: const TextStyle(fontWeight: FontWeight.w600),
                   ),
                 ),
               ),
@@ -78,16 +78,23 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(height: 24),
               const OrDividerWidget(),
               const SizedBox(height: 24),
-              OutlinedButton(
-                onPressed: () {},
-                child: Row(
-                  mainAxisAlignment: .center,
-                  spacing: 16,
-                  children: [
-                    SvgPicture.asset(AppIcons.google, fit: .scaleDown),
-                    Text(locale.loginWithGoogle),
-                  ],
-                ),
+              Consumer<LoginProvider>(
+                builder: (context, provider, child) {
+                  return OutlinedButton(
+                    onPressed: () {
+                      if (provider.loginStates == LoginStates.loading) return;
+                      provider.loginWithGoogle(context);
+                    },
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(AppIcons.google, fit: BoxFit.scaleDown),
+                        const SizedBox(width: 16),
+                        Text(locale.loginWithGoogle),
+                      ],
+                    ),
+                  );
+                },
               ),
             ],
           ),

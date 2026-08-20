@@ -28,13 +28,12 @@ class EventManagmentScreen extends StatelessWidget {
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
-          crossAxisAlignment: .start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(height: 16),
             const SizedBox(height: 16),
             Consumer<EventManagmentProvider>(
               builder: (context, provider, child) => Column(
-                spacing: 16,
                 children: [
                   AnimatedContainer(
                     duration: const Duration(milliseconds: 300),
@@ -46,10 +45,11 @@ class EventManagmentScreen extends StatelessWidget {
                       border: Border.all(color: colorScheme.outline, width: 1),
                       image: DecorationImage(
                         image: AssetImage(provider.selectedCategory.imageLight),
-                        fit: .cover,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
                   DefaultTabController(
                     length: Category.categories.length,
                     child: TabBar(

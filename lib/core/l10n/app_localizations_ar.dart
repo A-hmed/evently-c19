@@ -153,4 +153,34 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get logout => 'تسجيل الخروج';
+
+  @override
+  String get findEvent => 'ابحث عن الأحداث التي تهمك';
+
+  @override
+  String get findEventDescription =>
+      'انغمس في عالم من الأحداث المصممة لتناسب اهتماماتك الفريدة. سواء كنت مهتماً بالموسيقى الحية، أو ورش العمل الفنية، أو التواصل المهني، أو مجرد اكتشاف تجارب جديدة، فلدينا شيء للجميع. ستساعدك توصياتنا المنسقة على الاستكشاف والتواصل والاستفادة القصوى من كل فرصة من حولك.';
+
+  @override
+  String get effortlessPlanning => 'تخطيط سهل للفعاليات';
+
+  @override
+  String get effortlessPlanningDescription =>
+      'تخلص من عناء تنظيم الفعاليات باستخدام أدوات التخطيط الشاملة لدينا. من إعداد الدعوات وإدارة الردود على الدعوات إلى جدولة التذكيرات وتنسيق التفاصيل، نحن نوفر لك كل ما تحتاجه. خطط بكل سهولة وركز على ما يهم – خلق تجربة لا تُنسى لك ولضيوفك.';
+
+  @override
+  String get connectWithFriends => 'تواصل مع الأصدقاء وشارك اللحظات';
+
+  @override
+  String get connectWithFriendsDescription =>
+      'اجعل كل حدث لا يُنسى من خلال مشاركة التجربة مع الآخرين. تتيح لك منصتنا دعوة الأصدقاء وإبقاء الجميع على اطلاع والاحتفال باللحظات معاً. التقط وشارك الإثارة مع شبكتك حتى تتمكن من استعادة الذكريات العزيزة.';
+
+  @override
+  String get next => 'التالي';
+
+  @override
+  String get skip => 'تخطي';
+
+  @override
+  String get getStarted => 'ابدأ الآن';
 }

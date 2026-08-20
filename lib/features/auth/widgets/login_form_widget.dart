@@ -16,8 +16,17 @@ class LoginFormWidget extends StatelessWidget {
     return Form(
       key: loginProvider.formKey,
       child: Column(
-        spacing: 8,
         children: [
+          CustomTextFormField(
+            controller: loginProvider.emailController,
+            keyboardType: TextInputType.emailAddress,
+            textInputAction: TextInputAction.next,
+            lableText: locale.email,
+            hintText: locale.enterYourEmail,
+            prefixIcon: const Icon(IconsaxPlusLinear.sms),
+            validator: (value) => AppValidator.emailValidator(value, locale),
+          ),
+          const SizedBox(height: 8),
           CustomTextFormField(
             controller: loginProvider.emailController,
             keyboardType: TextInputType.emailAddress,

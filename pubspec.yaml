@@ -40,12 +40,17 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   intl: any
-  shared_preferences: 
+  shared_preferences:
   iconsax_plus: ^1.0.0
   firebase_core: ^4.12.1
   firebase_auth: ^6.5.6
   fluttertoast: ^9.1.0
   cloud_firestore: ^6.7.1
+  google_sign_in: ^7.2.0
+  firebase_storage: ^13.4.6
+  firebase_messaging: ^16.5.0
+  firebase_analytics: ^12.4.6
+  firebase_crashlytics: ^5.2.7
 
 
 dev_dependencies:

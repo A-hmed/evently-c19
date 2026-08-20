@@ -29,6 +29,24 @@ class FirebaseFirestoreServices {
     }
   }
 
+  static Future<void> updateEvent(Event event) async {
+    try {
+      final ref = getEventCollectionRef();
+      await ref.doc(event.id).update(event.toFirestore());
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+  static Future<void> deleteEvent(String eventId) async {
+    try {
+      final ref = getEventCollectionRef();
+      await ref.doc(eventId).delete();
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
   static Stream<List<Event>> getEventsList() {
     var streamQuerySnapShot = getEventCollectionRef().snapshots();
     return streamQuerySnapShot.map((querySnapShot) {
